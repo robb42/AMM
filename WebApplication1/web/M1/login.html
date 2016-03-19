@@ -6,11 +6,35 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Vapore</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        
+        <!-- NavBar -->
+        <nav>
+            <div>
+                <a href="descrizione.html">Descrizione</a>
+                <br>
+                <a href="cliente.html">Cliente</a>
+                <br>
+                <a href="venditore.html">Venditore</a>
+                <br>
+            </div>
+        </nav>
+        
+        <!-- Login -->
+        <form method="post">
+            <div>
+                <label for="login">Login: </label>
+                <input type="text" name="NomeUtente" id="login" placeholder="Nome Utente">
+                <label for="password">Password: </label>
+                <input type="password" name="Password" id="password" placeholder="Password">
+                <br>
+                <input type="submit">
+            </div>
+        </form>
+        
     </body>
 </html>
