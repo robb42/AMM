@@ -1,0 +1,114 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4-apr-2016, 15.35.12
+    Author     : rober
+*/
+    
+
+/* Import font */
+@font-face{
+    font-family: 'roboto';
+    src: url('Fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'robotoCondensed';
+    src: url('Fonts/RobotoCondensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* CSS generali */
+body{
+    font-family: roboto;
+    background: url(Images/bg.jpg) no-repeat center center fixed;
+    background-size: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#header{
+    position: fixed;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    z-index: 100;
+    background-color: #FFEDE2;
+}
+
+#page{
+    position: absolute;
+    text-align: left;
+    background-color: #FFEDE2;
+}
+
+.navbar{
+    list-style: none;
+}
+
+.navbar ul{
+    margin:auto;
+    position: relative;
+    display: block;
+    float: inside;
+}
+
+.navbar ul li{
+    font-family: roboto;
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+}
+
+a:link{
+    text-decoration: none;
+    color: #CDEAFF;
+}
+
+a:visited{
+    text-decoration: none;
+    color: #CDEAFF;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+
+/* CSS per pagine FullHD */
+@media only screen and (min-width: 1920px) {
+    
+    #header{
+        height: 50px;
+    }
+
+    #page{
+        margin-top: 50px;
+        margin-right: 30%;
+        margin-left: 30%;
+        width: 40%;
+    }
+
+    .navbar{
+    }
+
+    .navbar ul{
+    }
+
+    .navbar ul li{
+        margin: 0px;
+        padding-right: 20px;
+        padding-left: 20px;
+        line-height: 50px;
+        font-size: 1.4em;
+    }
+}
