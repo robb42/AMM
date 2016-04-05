@@ -37,13 +37,16 @@ and open the template in the editor.
 
 
 /* CSS generali */
+html, body{
+    margin: 0;
+    height: auto;
+}
+
 body{
     font-family: robotoCondensedLight;
     background: url(Images/bg.jpg) no-repeat;
     background-color: #205a5c;
     background-size: 100%;
-    margin: 0;
-    height: 100%;
 }
 
 #header{
@@ -55,6 +58,7 @@ body{
     text-align: center;
     z-index: 100;
     background-color: #fea39e;
+    border-bottom: 1px solid #ff8982;
 }
 
 #page{
