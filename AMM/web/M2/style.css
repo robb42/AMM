@@ -17,8 +17,20 @@ and open the template in the editor.
     font-style: normal;
 }
 @font-face{
+    font-family: 'robotoLight';
+    src: url('Fonts/Roboto-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
     font-family: 'robotoCondensed';
     src: url('Fonts/RobotoCondensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'robotoCondensedLight';
+    src: url('Fonts/RobotoCondensed-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -26,43 +38,60 @@ and open the template in the editor.
 
 /* CSS generali */
 body{
-    font-family: roboto;
-    background: url(Images/bg.jpg) no-repeat center center fixed;
+    font-family: robotoCondensedLight;
+    background: url(Images/bg.jpg) no-repeat;
+    background-color: #205a5c;
     background-size: 100%;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
+    height: 100%;
 }
 
 #header{
     position: fixed;
+    top: 0;
     width: 100%;
     margin: 0px;
     padding: 0px;
     text-align: center;
     z-index: 100;
-    background-color: #FFEDE2;
+    background-color: #fea39e;
 }
 
 #page{
-    position: absolute;
+    position: static;
     text-align: left;
-    background-color: #FFEDE2;
+    background-color: #ffede2;
+    bottom: 0;
+}
+
+#footer{
+    position: relative;
+    background: #7ac2c7;
+    width: 100%;
+    text-align: center;
+    z-index: 90;
+    color: #ffede2;
+    bottom: 0;
+    left: 0;
+}
+
+#footer p{
+    display: block; 
+    margin: auto;   
 }
 
 .navbar{
     list-style: none;
 }
-
 .navbar ul{
     margin:auto;
     position: relative;
     display: block;
     float: inside;
 }
-
 .navbar ul li{
-    font-family: roboto;
+    font-family: robotoLight;
+    text-transform: uppercase;
     position: relative;
     vertical-align: middle;
     display: inline-block;
@@ -71,16 +100,17 @@ body{
 
 a:link{
     text-decoration: none;
-    color: #CDEAFF;
+    color: #cdeaff;
 }
 
 a:visited{
     text-decoration: none;
-    color: #CDEAFF;
+    color: #cdeaff;
 }
 
 a:hover{
-    text-decoration: underline;
+    text-decoration: none;
+    border-bottom: 1px solid;
 }
 
 
@@ -92,10 +122,35 @@ a:hover{
     }
 
     #page{
+        top: 50px;
+        height: auto;
         margin-top: 50px;
-        margin-right: 30%;
-        margin-left: 30%;
-        width: 40%;
+        margin-left: 25%;
+        width: 50%;
+    }
+    
+    #sidebar1{
+        float: left;
+        height: 100%;
+        width: 20%;
+    }
+
+    #sidebar2{
+        float: right;
+        height: 100%;
+        width: 20%;
+    }
+
+    #content{
+        height: 100%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    #footer{
+        height: 30px;
+        font-size: 1.4em; 
+        line-height: 30px;
     }
 
     .navbar{
@@ -110,5 +165,15 @@ a:hover{
         padding-left: 20px;
         line-height: 50px;
         font-size: 1.4em;
+    }
+    
+    .gameicon{
+        width: 230px;
+        height: 110px;
+    }
+    
+    .gameicon-sale{
+        width: 180px;
+        height: 85px;
     }
 }
