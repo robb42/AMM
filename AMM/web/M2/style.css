@@ -38,12 +38,12 @@ and open the template in the editor.
 
 /* CSS generali */
 html, body{
+    font-family: robotoCondensedLight;
     margin: 0;
-    height: auto;
+    height: 100%;
 }
 
 body{
-    font-family: robotoCondensedLight;
     background: url(Images/bg.jpg) no-repeat;
     background-color: #205a5c;
     background-size: 100%;
@@ -57,24 +57,24 @@ body{
     padding: 0px;
     text-align: center;
     z-index: 100;
-    background-color: #fea39e;
-    border-bottom: 1px solid #ff8982;
+    background-color: #205a5c;
+    border-bottom: 1px solid #154344;
 }
 
 #page{
-    position: static;
+    position: relative;
     text-align: left;
-    background-color: #ffede2;
+    background-color: #609C9E;
     bottom: 0;
 }
 
 #footer{
     position: relative;
-    background: #7ac2c7;
+    background: #2B797C;
     width: 100%;
     text-align: center;
     z-index: 90;
-    color: #ffede2;
+    color: #7ac2c7;
     bottom: 0;
     left: 0;
 }
@@ -82,6 +82,19 @@ body{
 #footer p{
     display: block; 
     margin: auto;   
+}
+
+a:link{
+    text-decoration: none;
+    color: #cdeaff;
+}
+a:visited{
+    text-decoration: none;
+    color: #cdeaff;
+}
+a:hover{
+    text-decoration: none;
+    border-bottom: 1px solid;
 }
 
 .navbar{
@@ -102,21 +115,20 @@ body{
     overflow: hidden;
 }
 
-a:link{
-    text-decoration: none;
-    color: #cdeaff;
+.client{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
 }
-
-a:visited{
-    text-decoration: none;
-    color: #cdeaff;
+.client tr{
+    margin: 0;
 }
-
-a:hover{
-    text-decoration: none;
-    border-bottom: 1px solid;
+.client tr:nth-child(odd){
+    background-color: #72B4B6;
 }
-
+.client tr:nth-child(even){
+    background-color: #568B8D;
+}
 
 /* CSS per pagine FullHD */
 @media only screen and (min-width: 1920px) {
@@ -128,9 +140,9 @@ a:hover{
     #page{
         top: 50px;
         height: auto;
-        margin-top: 50px;
         margin-left: 25%;
         width: 50%;
+        padding-top: 20px;
     }
     
     #sidebar1{
@@ -170,10 +182,17 @@ a:hover{
         line-height: 50px;
         font-size: 1.4em;
     }
+
+    .client{
+        font-size: 0.8em;
+    }
+    .client tr{
+        height: 56px;
+    }
     
     .gameicon{
-        width: 230px;
-        height: 110px;
+        width: 115px;
+        height: 56px;
     }
     
     .gameicon-sale{
