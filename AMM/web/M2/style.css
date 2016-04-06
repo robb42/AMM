@@ -35,6 +35,17 @@ and open the template in the editor.
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('Fonts/FontAwesome/fontawesome-webfont.eot');
+    src: url('Fonts/FontAwesome/fontawesome-webfont.eot') format('embedded-opentype'), url('Fonts/FontAwesome/fontawesome-webfont.woff2') format('woff2'), url('Fonts/FontAwesome/fontawesome-webfont.woff') format('woff'), url('Fonts/FontAwesome/fontawesome-webfont.ttf') format('truetype'), url('Fonts/FontAwesome/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.shopping-cart:before{
+    font-family: FontAwesome;
+    content: "\f07a";
+}
 
 /* CSS generali */
 html, body{
@@ -67,6 +78,14 @@ body{
     background-color: #609C9E;
     bottom: 0;
 }
+    
+#sidebar1{
+    text-align: center;
+}
+
+#sidebar2{
+    text-align: center;
+}
 
 #footer{
     position: relative;
@@ -84,14 +103,11 @@ body{
     margin: auto;   
 }
 
-a:link{
+a:link, a:visited{
     text-decoration: none;
     color: #cdeaff;
 }
-a:visited{
-    text-decoration: none;
-    color: #cdeaff;
-}
+
 a:hover{
     text-decoration: none;
     border-bottom: 1px solid;
@@ -100,12 +116,14 @@ a:hover{
 .navbar{
     list-style: none;
 }
+
 .navbar ul{
     margin:auto;
     position: relative;
     display: block;
     float: inside;
 }
+
 .navbar ul li{
     font-family: robotoLight;
     text-transform: uppercase;
@@ -118,61 +136,79 @@ a:hover{
 .client{
     width: 100%;
     text-align: center;
-    border-collapse: collapse;
+    border-collapse: separate;
 }
-.client tr{
-    margin: 0;
-}
+
 .client tr:nth-child(odd){
     background-color: #72B4B6;
 }
+
 .client tr:nth-child(even){
     background-color: #568B8D;
 }
 
+.cart{
+    width: 50px;
+}
+
+h1, h2, h3{
+    color: #445E5F;
+}
+
+.title{
+    background-color: #72B4B6;
+}
+
+#vapore{
+    background-color: #72B4B6;
+    text-align: center;
+}
+
 /* CSS per pagine FullHD */
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 1024px) {
     
     #header{
         height: 50px;
     }
 
     #page{
-        top: 50px;
+        margin-top: 50px;
         height: auto;
-        margin-left: 25%;
-        width: 50%;
-        padding-top: 20px;
+        width: 960px;
+        margin-right: auto;
+        margin-left: auto;
     }
     
     #sidebar1{
         float: left;
-        height: 100%;
         width: 20%;
+        padding-top: 20px;
+        padding-right: 5px;
+        padding-bottom: 30px;
     }
 
     #sidebar2{
         float: right;
-        height: 100%;
         width: 20%;
+        padding-top: 20px;
+        padding-left: 5px;
+        padding-bottom: 30px;
     }
 
     #content{
         height: 100%;
-        margin-left: 20%;
         margin-right: 20%;
+        margin-left: 20%;
+        padding-top: 20px;
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-bottom: 30px;
     }
 
     #footer{
         height: 30px;
         font-size: 1.4em; 
         line-height: 30px;
-    }
-
-    .navbar{
-    }
-
-    .navbar ul{
     }
 
     .navbar ul li{
@@ -182,21 +218,46 @@ a:hover{
         line-height: 50px;
         font-size: 1.4em;
     }
+    
+    #sidebar2 table{
+        border-spacing: 0 5px;
+        width: 100%;
+        text-align: center;
+        border-collapse: separate;
+    }
+    
+    .gameicon-sale{
+        background-size: auto 100%;
+        width: 140px;
+        height: 65px;
+    }
 
     .client{
         font-size: 0.8em;
-    }
-    .client tr{
-        height: 56px;
+        border-spacing: 0 5px;
     }
     
-    .gameicon{
+    .description{
+        height: 28px;
+    }
+    
+    .logo{
+        text-align: left;
         width: 115px;
         height: 56px;
     }
     
-    .gameicon-sale{
-        width: 180px;
-        height: 85px;
+    .gameicon{
+        background-size: auto 100%;
+        width: 115px;
+        height: 56px;
+    }
+    
+    .title{
+        padding-left: 30px;
+    }
+    
+    #vapore{
+        height: 50px;
     }
 }

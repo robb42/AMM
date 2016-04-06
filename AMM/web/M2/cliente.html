@@ -12,7 +12,6 @@ and open the template in the editor.
         <meta name="author" content="Roberto Cocco">
         <meta name="keywords" content="Vapore, Giochi, Software">
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" >
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     </head>
     <body>
         <!-- NavBar -->
@@ -29,28 +28,7 @@ and open the template in the editor.
         
         <div id="page">
             <!--  sidebar 1 -->
-            <div id="sidebar1">
-                <ul>
-                    <li id="categories">
-                        <h2 class="icon-title">Navigazione</h2>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="studente_anagrafica.html">Anagrafica</a></li>
-                            <li><a href="studente_esami.html">Libretto</a></li>
-                            <li><a href="studente_iscrizione.html">Iscrizione</a></li>
-                        </ul>
-                    </li>
-                    <li id="external">
-                        <h2 class="icon-title">Link esterni</h2>
-                        <ul>
-                            <li><a href="http://www.unica.it/">Universit&agrave; di Cagliari</a></li>
-                            <li><a href="http://www.unica.it/">Facolt&agrave;</a></li>
-
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
+            <div id="sidebar1"></div>
             
             <!--  sidebar 2 -->
             <div id="sidebar2">
@@ -58,12 +36,12 @@ and open the template in the editor.
                 <table>
                     <tr>
                         <th>
-                            <img src="https://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg" width="460" height="215" alt="Squadra Fortezza 2" class="gameicon-sale">
+                            <img src="Images/001.jpg" width="140" height="65" alt="Squadra Fortezza 2" class="gameicon-sale">
                         </th>
                     </tr>
                     <tr>
                         <th>
-                            <img src="http://cdn.akamai.steamstatic.com/steam/apps/220/header.jpg" width="460" height="215" alt="Mezza-Vita 2" class="gameicon-sale">
+                            <img src="Images/005.jpg" width="140" height="65" alt="Mezza-Vita 2" class="gameicon-sale">
                         </th>
                     </tr>
                 </table>
@@ -72,156 +50,178 @@ and open the template in the editor.
             <!-- Content -->
             <div id="content">
                 <table class="client">
-                    <tr>
+                    <tr class="description">
+                        <th colspan="2">
+                            Nome
+                        </th>
                         <th>
-                            <img src="https://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg" width="460" height="215" alt="Squadra Fortezza 2" class="gameicon">
+                            Disponibili
+                        </th>
+                        <th>
+                            Prezzo
+                        </th>
+                        <th class="cart">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/001.jpg')"></div>
                         </th>
                         <th>
                             Squadra Fortezza 2
                         </th>
                         <th>
-                            Disponibili: 7
-                            <br>
-                            Prezzo: 10€
+                            7
                         </th>
                         <th>
-                            <a href="cliente.html">Aggiungi al Carrello</a>
+                            10€
+                        </th>
+                        <th>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
                         </th>
                     </tr>
 
                     <tr>
-                        <th>
-                            <img src="http://cdn.akamai.steamstatic.com/steam/apps/70/header.jpg" width="460" height="215" alt="Mezza-Vita" class="gameicon">
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/002.jpg')"></div>
                         </th>
                         <th>
                             Mezza-Vita
                         </th>
                         <th>
-                            Disponibili: 3
-                            <br>
-                            Prezzo: 15€
+                            3
                         </th>
                         <th>
-                            <a href="cliente.html">Aggiungi al Carrello</a>
+                            5€
+                        </th>
+                        <th>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
                         </th>
                     </tr>
 
                     <tr>
-                        <th>
-                            <img src="http://cdn.akamai.steamstatic.com/steam/apps/220/header.jpg" width="460" height="215" alt="Mezza-Vita 2" class="gameicon">
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/003.jpg')"></div>
                         </th>
                         <th>
                             Mezza-Vita 2
                         </th>
                         <th>
-                            Disponibili: 6
-                            <br>
-                            Prezzo: 20€
+                            6
                         </th>
                         <th>
-                            <a href="cliente.html">Aggiungi al Carrello</a>
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <th>
-                            <img src="http://gamehall.uol.com.br/selectgame/wp-content/uploads/2013/07/Gabe-Newell-Half-Life-3-Wallpaper-By-G_e_e_r_s.jpg" width="460" height="215" alt="Mezza-Vita 3" class="gameicon">
+                            20€
                         </th>
                         <th>
-                            Mezza-Vita 3
-                        </th>
-                        <th>
-                            Disponibili: 0
-                            <br>
-                            Prezzo: 60€
-                        </th>
-                        <th>
-                            <a href="cliente.html">Aggiungi al Carrello</a>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
                         </th>
                     </tr>
 
                     <tr>
-                        <th>
-                            <img src="http://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg" width="460" height="215" alt="ContrAttacco: Offensiva Globale" class="gameicon">
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/004.jpg')"></div>
                         </th>
                         <th>
-                            ContrAttacco: Offensiva Globale
+                            Mezza-Vita 2 Ep: Uno
                         </th>
                         <th>
-                            Disponibili: 4
-                            <br>
-                            Prezzo: 20€
+                            2
                         </th>
                         <th>
-                            <a href="cliente.html">Aggiungi al Carrello</a>
+                            20€
+                        </th>
+                        <th>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
                         </th>
                     </tr>
 
                     <tr>
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/005.jpg')"></div>
+                        </th>
                         <th>
-                            <img src="http://cdn.akamai.steamstatic.com/steam/apps/400/header.jpg" width="460" height="215" alt="Portale" class="gameicon">
+                            Mezza-Vita 2 Ep: Due
+                        </th>
+                        <th>
+                            7
+                        </th>
+                        <th>
+                            20€
+                        </th>
+                        <th>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/006.jpg')"></div>
                         </th>
                         <th>
                             Portale
                         </th>
                         <th>
-                            Disponibili: 15
-                            <br>
-                            Prezzo: 5€
+                            15
                         </th>
                         <th>
-                            <a href="cliente.html">Aggiungi al Carrello</a>
+                            5€
+                        </th>
+                        <th>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
                         </th>
                     </tr>
 
                     <tr>
-                        <th>
-                            <img src="http://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg" width="460" height="215" alt="Portale 2" class="gameicon">
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/007.jpg')"></div>
                         </th>
                         <th>
                             Portale 2
                         </th>
                         <th>
-                            Disponibili: 7
-                            <br>
-                            Prezzo: 15€
+                            7
                         </th>
                         <th>
-                            <i class="fa fa-shopping-cart"></i>
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <th>
-                            <img src="http://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg" width="460" height="215" alt="Portale 2" class="gameicon">
+                            15€
                         </th>
                         <th>
-                            Portale 2
-                        </th>
-                        <th>
-                            Disponibili: 7
-                            <br>
-                            Prezzo: 15€
-                        </th>
-                        <th>
-                            <a href="cliente.html">Aggiungi al Carrello</a>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
                         </th>
                     </tr>
 
                     <tr>
-                        <th>
-                            <img src="http://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg" width="460" height="215" alt="Portale 2" class="gameicon">
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/008.jpg')"></div>
                         </th>
                         <th>
-                            Portale 2
+                            Lasciati Per Morire 2
                         </th>
                         <th>
-                            Disponibili: 7
-                            <br>
-                            Prezzo: 15€
+                            5
                         </th>
                         <th>
-                            <a href="cliente.html">Aggiungi al Carrello</a>
+                            15€
+                        </th>
+                        <th>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th class="logo">
+                            <div class="gameicon" style="background-image:url('Images/009.jpg')"></div>
+                        </th>
+                        <th>
+                            ContrAttacco: Offensiva Globale
+                        </th>
+                        <th>
+                            4
+                        </th>
+                        <th>
+                            20€
+                        </th>
+                        <th>
+                            <a href="cliente.html"><i class="shopping-cart"></i></a>
                         </th>
                     </tr>
                 </table>

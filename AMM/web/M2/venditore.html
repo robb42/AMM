@@ -16,41 +16,78 @@ and open the template in the editor.
     <body>
         
         <!-- NavBar -->
-        <nav>
-            <div>
-                <a href="descrizione.html">Descrizione</a>
-            </div>
-            <div>
-                <a href="login.html">Login</a>
-            </div>
-        </nav>
+        <div id="header">
+            <nav class="navbar">
+                <div>
+                    <ul>
+                        <li id="descrizione"><a href="descrizione.html">Descrizione</a></li>
+                        <li id="login"><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
         
-        <!-- Vendita di un prodotto -->
-        <form method="post">
-            <div>
-                <label for="nome">Nome prodotto: </label>
-                <input type="text" name="NomeProdotto" id="nome" placeholder="Nome Prodotto">
+        <div id="page">
+            <!--  sidebar 1 -->
+            <div id="sidebar1"></div>
+            
+            <!--  sidebar 2 -->
+            <div id="sidebar2">
+                <h2>Offerta di oggi:</h2>
+                <table>
+                    <tr>
+                        <th>
+                            <img src="Images/001.jpg" width="140" height="65" alt="Squadra Fortezza 2" class="gameicon-sale">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <img src="Images/005.jpg" width="140" height="65" alt="Mezza-Vita 2" class="gameicon-sale">
+                        </th>
+                    </tr>
+                </table>
             </div>
-            <div>
-                <label for="url">URL Immagine: </label>
-                <input type="text" name="URLImmagine" id="url" placeholder="http://">
+            
+            <!-- Content -->
+                <div id="content">
+                <form method="post">
+                    <div>
+                        <label for="nome">Nome prodotto: </label>
+                        <input type="text" name="NomeProdotto" id="nome" placeholder="Nome Prodotto">
+                    </div>
+                    <div>
+                        <label for="url">URL Immagine: </label>
+                        <input type="text" name="URLImmagine" id="url" placeholder="http://">
+                    </div>
+                    <div>
+                        <label for="descrizione">Descrizione: </label>
+                        <textarea rows="3" cols="25" name="Descrizione" id="descrizione" placeholder="Descrivi il tuo prodotto"></textarea>
+                    </div>
+                    <div>
+                        <label for="quantita">Quantità: </label>
+                        <input type="text" name="Quantita" id="quantita">
+                    </div>
+                    <div>
+                        <label for="prezzo">Prezzo: </label>
+                        <input type="text" name="Prezzo" id="prezzo" placeholder="€">
+                    </div>
+                    <div>
+                        <input type="submit">
+                    </div>
+                </form>
             </div>
-            <div>
-                <label for="descrizione">Descrizione: </label>
-                <textarea rows="3" cols="25" name="Descrizione" id="descrizione" placeholder="Descrivi il tuo prodotto"></textarea>
-            </div>
-            <div>
-                <label for="quantita">Quantità: </label>
-                <input type="text" name="Quantita" id="quantita">
-            </div>
-            <div>
-                <label for="prezzo">Prezzo: </label>
-                <input type="text" name="Prezzo" id="prezzo" placeholder="€">
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
+            
+            <div style="clear: both; width: 0px; height: 0px;"></div>
+            <!--  footer -->
+            <footer>
+                <div id="footer">
+                    <p>
+                        VAPORE GIOCHI 2016
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
         
     </body>
 </html>

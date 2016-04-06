@@ -16,32 +16,65 @@ and open the template in the editor.
     <body>
         
         <!-- NavBar -->
-        <nav>
-            <div>
-                <a href="descrizione.html">Descrizione</a>
-            </div>
-            <div>
-                <a href="cliente.html">Cliente</a>
-            </div>
-            <div>
-                <a href="venditore.html">Venditore</a>
-            </div>
-        </nav>
+        <div id="header">
+            <nav class="navbar">
+                <div>
+                    <ul>
+                        <li id="descrizione"><a href="descrizione.html">Descrizione</a></li>
+                        <li id="cliente"><a href="cliente.html">Cliente</a></li>
+                        <li id="venditore"><a href="venditore.html">Venditore</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
         
-        <!-- Login -->
-        <form method="post">
-            <div>
-                <label for="login">Login: </label>
-                <input type="text" name="NomeUtente" id="login" placeholder="Nome Utente">
+        <div id="page">
+            <!--  sidebar 1 -->
+            <div id="sidebar1"></div>
+            
+            <!--  sidebar 2 -->
+            <div id="sidebar2">
+                <h2>Offerta di oggi:</h2>
+                <table>
+                    <tr>
+                        <th>
+                            <img src="Images/001.jpg" width="140" height="65" alt="Squadra Fortezza 2" class="gameicon-sale">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <img src="Images/005.jpg" width="140" height="65" alt="Mezza-Vita 2" class="gameicon-sale">
+                        </th>
+                    </tr>
+                </table>
             </div>
-            <div>
-                <label for="password">Password: </label>
-                <input type="password" name="Password" id="password" placeholder="Password">
+            
+            <!-- Content -->
+            <div id="content">
+                <form method="post">
+                    <div>
+                        <label for="login">Login: </label>
+                        <input type="text" name="NomeUtente" id="login" placeholder="Nome Utente">
+                    </div>
+                    <div>
+                        <label for="password">Password: </label>
+                        <input type="password" name="Password" id="password" placeholder="Password">
+                    </div>
+                    <div>
+                        <input type="submit">
+                    </div>
+                </form>
             </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
+            <div style="clear: both; width: 0px; height: 0px;"></div>
+            <!--  footer -->
+            <footer>
+                <div id="footer">
+                    <p>
+                        VAPORE GIOCHI 2016
+                    </p>
+                </div>
+            </footer>
         
+        </div>
     </body>
 </html>
