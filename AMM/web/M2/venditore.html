@@ -20,8 +20,10 @@ and open the template in the editor.
             <nav class="navbar">
                 <div>
                     <ul>
-                        <li id="descrizione"><a href="descrizione.html">Descrizione</a></li>
-                        <li id="login"><a href="login.html">Login</a></li>
+                        <li id="descrizione" class="page"><a href="descrizione.html">Descrizione</a></li>
+                        <li id="cliente" class="page"><a href="cliente.html">Cliente</a></li>
+                        <li id="venditore" class="page"><a href="venditore.html">Venditore</a></li>
+                        <li id="login" class="page"><a href="login.html">Login</a></li>
                     </ul>
                 </div>
             </nav>
@@ -49,31 +51,22 @@ and open the template in the editor.
             </div>
             
             <!-- Content -->
-                <div id="content">
-                <form method="post">
-                    <div>
-                        <label for="nome">Nome prodotto: </label>
-                        <input type="text" name="NomeProdotto" id="nome" placeholder="Nome Prodotto">
-                    </div>
-                    <div>
-                        <label for="url">URL Immagine: </label>
-                        <input type="text" name="URLImmagine" id="url" placeholder="http://">
-                    </div>
-                    <div>
-                        <label for="descrizione">Descrizione: </label>
-                        <textarea rows="3" cols="25" name="Descrizione" id="descrizione" placeholder="Descrivi il tuo prodotto"></textarea>
-                    </div>
-                    <div>
-                        <label for="quantita">Quantità: </label>
-                        <input type="text" name="Quantita" id="quantita">
-                    </div>
-                    <div>
-                        <label for="prezzo">Prezzo: </label>
-                        <input type="text" name="Prezzo" id="prezzo" placeholder="€">
-                    </div>
-                    <div>
-                        <input type="submit">
-                    </div>
+            <div id="content">
+                <form method="post" class="form">
+                    <ul>
+                        <li>
+                            <input type="text" name="NomeProdotto" id="nome" placeholder="Nome Prodotto" class="form-element2 form-left">
+                            <input type="text" name="URLImmagine" id="url" placeholder="URL immagine" class="form-element2 form-right">
+                        </li>
+                        <li>
+                            <textarea rows="3" cols="25" name="Descrizione" id="description" placeholder="Descrizione" class="form-textarea"></textarea>
+                        </li>
+                        <li>
+                            <input type="text" name="Quantita" id="quantita" placeholder="Quantità" class="form-element form-left">
+                            <input type="text" name="Prezzo" id="prezzo" placeholder="Prezzo" class="form-element">
+                            <input type="submit" class="form-submit form-right">
+                        </li>
+                    </ul>
                 </form>
             </div>
             

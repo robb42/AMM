@@ -20,9 +20,10 @@ and open the template in the editor.
             <nav class="navbar">
                 <div>
                     <ul>
-                        <li id="descrizione"><a href="descrizione.html">Descrizione</a></li>
-                        <li id="cliente"><a href="cliente.html">Cliente</a></li>
-                        <li id="venditore"><a href="venditore.html">Venditore</a></li>
+                        <li id="descrizione" class="page"><a href="descrizione.html">Descrizione</a></li>
+                        <li id="cliente" class="page"><a href="cliente.html">Cliente</a></li>
+                        <li id="venditore" class="page"><a href="venditore.html">Venditore</a></li>
+                        <li id="login" class="page"><a href="login.html">Login</a></li>
                     </ul>
                 </div>
             </nav>
@@ -51,18 +52,14 @@ and open the template in the editor.
             
             <!-- Content -->
             <div id="content">
-                <form method="post">
-                    <div>
-                        <label for="login">Login: </label>
-                        <input type="text" name="NomeUtente" id="login" placeholder="Nome Utente">
-                    </div>
-                    <div>
-                        <label for="password">Password: </label>
-                        <input type="password" name="Password" id="password" placeholder="Password">
-                    </div>
-                    <div>
-                        <input type="submit">
-                    </div>
+                <form method="post" class="form">
+                    <ul>
+                        <li>
+                            <input type="text" name="NomeUtente" id="login" placeholder="Nome Utente" class="form-element form-left">
+                            <input type="password" name="Password" id="password" placeholder="Password" class="form-element">
+                            <input type="submit" class="form-submit form-right">
+                        </li>
+                    </ul>
                 </form>
             </div>
             <div style="clear: both; width: 0px; height: 0px;"></div>
