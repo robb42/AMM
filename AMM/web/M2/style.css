@@ -165,6 +165,7 @@ h1, h2, h3{
 
 /* Titolo Vapore presente nella pagina descrizione */
 #vapore{
+    background-color: #72B4B6;
     text-align: center;
 }
 
@@ -241,7 +242,159 @@ h1, h2, h3{
 }
 
 /* CSS per pagine >HD */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px){
+    
+    #header{
+        /* Altezza della sidebar */
+        height: 50px;
+    }
+
+    #page{
+        /* Larghezza della pagina */
+        width: 950px;
+        height: auto;
+        
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px;
+    }
+    
+    #sidebar1{
+        /* Posiziono la sidebar a sinistra */
+        float: left;
+        width: 20%;
+        
+        padding-top: 70px;
+        padding-right: 5px;
+        padding-bottom: 30px;
+    }
+
+    #sidebar2{
+        /* Posiziono la sidebar a destra */
+        float: right;
+        width: 20%;
+        
+        padding-top: 70px;
+        padding-left: 5px;
+        padding-bottom: 30px;
+    }
+
+    #content{
+        height: 100%;
+        
+        margin-right: 20%;
+        margin-left: 20%;
+        padding-top: 40px;
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-bottom: 30px;
+    }
+
+    #footer{
+        /* Altezza del footer */
+        height: 30px;
+        font-size: 1.4em;
+        /* Per centrare il testo verticalmente deve essere pari ad height */
+        line-height: 30px;
+    }
+
+    /* Testo nella Navbar */
+    .navbar ul li{
+        font-size: 1.4em;
+        margin: 0px;
+        padding-right: 20px;
+        padding-left: 20px;
+        /* Per centrare il testo verticalmente deve essere pari all'height dell'header */
+        line-height: 50px;
+    }
+    
+    #sidebar1 ul{
+        margin-left: 10px;
+    }
+    #sidebar1 ul li{
+        text-align: left;
+    }
+    
+    #sidebar2 table{
+        border-spacing: 0 5px;
+        width: 100%;
+        text-align: center;
+        border-collapse: separate;
+    }
+    
+    /* Loghi dei giochi in saldo */
+    .game-logo-sale{
+        background-size: auto 100%;
+        width: 140px;
+        height: 65px;
+    }
+
+    .table{
+        font-size: 0.8em;
+        border-spacing: 0 5px;
+    }
+    
+    /* Intestazione della tabella' */
+    .table-head{
+        height: 28px;
+    }
+    
+    /* Loghi dei giochi nella tabella */
+    .table-logo-box{
+        text-align: left;
+        width: 115px;
+        height: 56px;
+    }
+    .table-logo-bg{
+        background-size: auto 100%;
+        width: 115px;
+        height: 56px;
+    }
+    
+    /* Titoli nella pagina descrizione */
+    .description-title{
+        padding-left: 30px;
+    }
+    
+    /* Altezza del bg del titolo Vapore nella pagina descrizione */
+    #vapore{
+        height: 50px;
+    }
+
+    /* Primo tipo di elemento del form */
+    .form-element{
+        width: 40%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Secondo tipo di elemento del form */
+    .form-element2{
+        width: 48%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo textarea del form */
+    .form-textarea{
+        width: 99%;
+        height: 200px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo submit del form */
+    .form-submit{
+        width: 14%;
+        height: 30px;
+    }
+}
+
+/* CSS per pagine >480 & <HD */
+@media only screen and (min-width: 480px) and (max-width: 1024px){
     
     #header{
         /* Altezza della sidebar */
