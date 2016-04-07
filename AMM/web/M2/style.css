@@ -9,7 +9,7 @@ and open the template in the editor.
 */
     
 
-/* Import font */
+/* Importo Font */
 @font-face{
     font-family: 'roboto';
     src: url('Fonts/Roboto-Regular.ttf') format('truetype');
@@ -35,6 +35,7 @@ and open the template in the editor.
     font-style: normal;
 }
 
+/* Importo FontAwesome per le icone */
 @font-face {
     font-family: 'FontAwesome';
     src: url('Fonts/FontAwesome/fontawesome-webfont.eot');
@@ -42,32 +43,35 @@ and open the template in the editor.
     font-weight: normal;
     font-style: normal;
 }
+/* Classi di FA */
 .shopping-cart:before{
     font-family: FontAwesome;
     content: "\f07a";
 }
 
-/* CSS generali */
+/* Struttura generale */
 html, body{
     font-family: robotoCondensedLight;
     margin: 0;
-    height: 100%;
 }
 
 body{
+    /* Aggiungo un'immagine di sfondo' */
     background: url(Images/bg.jpg) no-repeat;
+    /* Aggiungo un colore di sfondo per quando la pagina superi l'immagine' */
     background-color: #205a5c;
     background-size: 100%;
 }
 
 #header{
+    /* Imposto l'header per restare sempre in cima alla pagina */
     position: fixed;
     top: 0;
+    z-index: 100;
     width: 100%;
     margin: 0px;
     padding: 0px;
     text-align: center;
-    z-index: 100;
     background-color: #205a5c;
     border-bottom: 1px solid #154344;
 }
@@ -79,11 +83,6 @@ body{
     bottom: 0;
 }
 
-#content{
-    height: 100vh;
-    min-height: 100vh;
-}
-    
 #sidebar1{
     text-align: center;
 }
@@ -97,66 +96,66 @@ body{
     background: #2B797C;
     width: 100%;
     text-align: center;
-    z-index: 90;
     color: #7ac2c7;
     bottom: 0;
     left: 0;
 }
-
 #footer p{
-    display: block; 
-    margin: auto;   
+    display: block;
+    margin: auto;
 }
 
+/* Imposto la visualizzazione dei link */
 a:link, a:visited{
     text-decoration: none;
     color: #374141;
 }
-
-.page a:link, .page a:visited{
-    color: #cdeaff;
-}
-
 a:hover{
+    /* Rimuovo le decorazioni varie, e aggiungo manualmente una barra da 1px sotto */
     text-decoration: none;
     border-bottom: 1px solid;
 }
 
+/* Link nella Navbar */
+.title a:link, .title a:visited{
+    color: #cdeaff;
+}
+
+/* Imposto la visualizzazione della Navbar */
 .navbar{
     list-style: none;
+    margin: 0;
 }
-
 .navbar ul{
-    margin:auto;
     position: relative;
-    display: block;
+    margin: auto;
     float: inside;
+    padding-left:0;
 }
-
 .navbar ul li{
-    font-family: robotoLight;
-    text-transform: uppercase;
     position: relative;
     vertical-align: middle;
+    font-family: robotoLight;
+    text-transform: uppercase;
     display: inline-block;
     overflow: hidden;
 }
 
-.client{
+/* Imposto la visualizzazione della tabella in client */
+.table{
     width: 100%;
     text-align: center;
     border-collapse: separate;
 }
-
-.client tr:nth-child(odd){
+.table tr:nth-child(odd){
     background-color: #72B4B6;
 }
-
-.client tr:nth-child(even){
+.table tr:nth-child(even){
     background-color: #568B8D;
 }
 
-.cart{
+/* Box contenente il carrello */
+.table-cart{
     width: 50px;
 }
 
@@ -164,78 +163,69 @@ h1, h2, h3{
     color: #445E5F;
 }
 
-.title{
-    background-color: #72B4B6;
-}
-
+/* Titolo Vapore presente nella pagina descrizione */
 #vapore{
-    background-color: #72B4B6;
     text-align: center;
 }
 
+/* Titoli presenti nella pagina descrizione */
+.description-title{
+    background-color: #72B4B6;
+}
+
+/* Imposto la visualizzazione dei form */
 .form{
     width: 100%;
     text-align: center;
     border: 0;
     border-collapse: collapse;
 }
-
 .form ul{
     width: 100%;
     list-style: none;
     display: block;
     padding: 0;
 }
-
 .form ul li{
     display: inline-block;
     width:100%;
 }
 
 .form-left{
+    /* Se voglio che l'elemento sia allineato a sinistra' */
     float: left;
 }
-
 .form-right{
+    /* Se voglio che l'elemento sia allineato a destra */
     float: right;
 }
 
+/* Primo tipo di elemento del form */
 .form-element{
-    width: 40%;
-    height: 30px;
     padding: 0;
-    padding-right: 3px;
-    padding-left: 3px;
     border: 0;
     color: black;
     background-color: #72B4B6;
 }
 
+/* Secondo tipo di elemento del form */
 .form-element2{
-    width: 48%;
-    height: 30px;
     padding: 0;
-    padding-right: 3px;
-    padding-left: 3px;
     border: 0;
     color: black;
     background-color: #72B4B6;
 }
 
+/* Campo textarea del form */
 .form-textarea{
-    width: 99%;
-    height: 200px;
     padding: 0;
-    padding-right: 3px;
-    padding-left: 3px;
     border: 0;
     color: black;
     background-color: #72B4B6;
 }
 
+/* Campo submit del form */
 .form-submit{
-    width: 14%;
-    height: 30px;
     border: 0;
     background-color: #72B4B6;
 }
@@ -244,7 +234,8 @@ h1, h2, h3{
     background-color: #6AA0A2;
 }
 
-*::-webkit-input-placeholder {
+/* Imposto la visualizzazione del placeholder nei form */
+*::-webkit-input-placeholder{
     opacity: 0.8;
     color: black;
 }
@@ -253,61 +244,73 @@ h1, h2, h3{
 @media only screen and (min-width: 1024px) {
     
     #header{
+        /* Altezza della sidebar */
         height: 50px;
     }
 
     #page{
-        margin-top: 50px;
+        /* Larghezza della pagina */
+        width: 950px;
         height: auto;
-        width: 960px;
+        
+        margin-top: 20px;
         margin-right: auto;
         margin-left: auto;
+        margin-bottom: 30px;
     }
     
     #sidebar1{
+        /* Posiziono la sidebar a sinistra */
         float: left;
         width: 20%;
-        padding-top: 20px;
+        
+        padding-top: 70px;
         padding-right: 5px;
         padding-bottom: 30px;
     }
 
     #sidebar2{
+        /* Posiziono la sidebar a destra */
         float: right;
         width: 20%;
-        padding-top: 20px;
+        
+        padding-top: 70px;
         padding-left: 5px;
         padding-bottom: 30px;
     }
 
     #content{
         height: 100%;
+        
         margin-right: 20%;
         margin-left: 20%;
-        padding-top: 20px;
+        padding-top: 40px;
         padding-right: 5px;
         padding-left: 5px;
         padding-bottom: 30px;
     }
 
     #footer{
+        /* Altezza del footer */
         height: 30px;
-        font-size: 1.4em; 
+        font-size: 1.4em;
+        /* Per centrare il testo verticalmente deve essere pari ad height */
         line-height: 30px;
     }
 
+    /* Testo nella Navbar */
     .navbar ul li{
+        font-size: 1.4em;
         margin: 0px;
         padding-right: 20px;
         padding-left: 20px;
+        /* Per centrare il testo verticalmente deve essere pari all'height dell'header */
         line-height: 50px;
-        font-size: 1.4em;
     }
     
     #sidebar1 ul{
         margin-left: 10px;
     }
-    
     #sidebar1 ul li{
         text-align: left;
     }
@@ -319,38 +322,72 @@ h1, h2, h3{
         border-collapse: separate;
     }
     
-    .gameicon-sale{
+    /* Loghi dei giochi in saldo */
+    .game-logo-sale{
         background-size: auto 100%;
         width: 140px;
         height: 65px;
     }
 
-    .client{
+    .table{
         font-size: 0.8em;
         border-spacing: 0 5px;
     }
     
-    .description{
+    /* Intestazione della tabella' */
+    .table-head{
         height: 28px;
     }
     
-    .logo{
+    /* Loghi dei giochi nella tabella */
+    .table-logo-box{
         text-align: left;
         width: 115px;
         height: 56px;
     }
-    
-    .gameicon{
+    .table-logo-bg{
         background-size: auto 100%;
         width: 115px;
         height: 56px;
     }
     
+    /* Titoli nella pagina descrizione */
     .title{
         padding-left: 30px;
     }
     
+    /* Altezza del bg del titolo Vapore nella pagina descrizione */
     #vapore{
         height: 50px;
+    }
+
+    /* Primo tipo di elemento del form */
+    .form-element{
+        width: 40%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Secondo tipo di elemento del form */
+    .form-element2{
+        width: 48%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo textarea del form */
+    .form-textarea{
+        width: 99%;
+        height: 200px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo submit del form */
+    .form-submit{
+        width: 14%;
+        height: 30px;
     }
 }
