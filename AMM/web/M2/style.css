@@ -230,7 +230,7 @@ h1, h2, h3{
     background-color: #72B4B6;
 }
 
-.form-element:focus, .focus-element2:focus, .focus-textarea:focus, .form-submit:focus{
+.form-element:focus, .form-element2:focus, .form-textarea:focus, .form-submit:focus{
     background-color: #6AA0A2;
 }
 
