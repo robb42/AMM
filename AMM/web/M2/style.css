@@ -129,7 +129,6 @@ a:hover{
 .navbar ul{
     position: relative;
     margin: auto;
-    float: inside;
     padding-left:0;
 }
 .navbar ul li{
