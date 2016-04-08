@@ -463,8 +463,8 @@ h1, h2, h3{
     .navbar ul li{
         font-size: 1.2em;
         margin: 0px;
-        padding-right: 20px;
-        padding-left: 20px;
+        padding-right: 15px;
+        padding-left: 15px;
         /* Per centrare il testo verticalmente deve essere pari all'height dell'header */
         line-height: 50px;
     }
@@ -556,8 +556,8 @@ h1, h2, h3{
     }
 }
 
-/* CSS per pagine <600 */
-@media only screen and (max-width: 600px){
+/* CSS per pagine >480 & <600 */
+@media only screen and (min-width: 420px) and (max-width: 600px){
     
     #header{
         /* Altezza della sidebar */
@@ -619,6 +619,133 @@ h1, h2, h3{
         padding-right: 10px;
         padding-left: 10px;
         /* Per avere due righe di testoo centrate verticalmente de'vessere la metà dell'header height' */
+        line-height: 40px;
+    }
+
+    .table{
+        font-size: 0.8em;
+        border-spacing: 0 5px;
+    }
+    
+    /* Intestazione della tabella' */
+   .table-head{
+        height: 28px;
+    }
+    
+    /* Nascondo i loghi dei giochi nella tabella */
+    .table-logo-box{
+        visibility: hidden;
+    }
+    
+    /* Imposto l'altezza degli elementi della tabella' */
+     .table tr{
+        height: 28px;
+    }
+    
+    /* Titoli nella pagina descrizione */
+    .description-title{
+        padding-left: 30px;
+    }
+    
+    /* Altezza del bg del titolo Vapore nella pagina descrizione */
+    #vapore{
+        height: 30px;
+    }
+
+    /* Primo tipo di elemento del form */
+    .form-element{
+        width: 40%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Secondo tipo di elemento del form */
+    .form-element2{
+        width: 47%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo textarea del form */
+    .form-textarea{
+        width: 98%;
+        height: 200px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo submit del form */
+    .form-submit{
+        width: 14%;
+        height: 30px;
+    }
+}
+
+/* CSS per pagine <480 */
+@media only screen and (max-width: 420px){
+    
+    #header{
+        /* Altezza della sidebar */
+        height: 40px;
+    }
+
+    #page{
+        /* Larghezza della pagina */
+        width: 100%;
+        height: auto;
+        
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px;
+    }
+    
+    #sidebar1{
+        /* Nascondo la prima sidebar */
+        display: none;
+    }
+
+    #sidebar2{
+        /* Nascondo la seconda sidebar */
+        display: none;
+    }
+
+    #content{
+        height: 100%;
+        
+        padding-top: 20px;
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-bottom: 20px;
+    }
+
+    #footer{
+        /* Altezza del footer */
+        height: 20px;
+        font-size: 1.2em;
+        /* Per centrare il testo verticalmente deve essere pari ad height */
+        line-height: 20px;
+    }
+    
+    h1{
+        font-size: 1.2em;
+    }
+    h2{
+        font-size: 1.1em;
+    }
+    h3{
+        font-size: 1.1em;
+    }
+    
+    /* Testo nella Navbar */
+    .navbar ul li{
+        font-size: 1.1em;
+        margin: 0px;
+        padding-right: 25px;
+        padding-left: 25px;
+        /* Per avere due righe di testo centrate verticalmente dev'essere la metà dell'header height' */
         line-height: 20px;
     }
 
@@ -635,6 +762,11 @@ h1, h2, h3{
     /* Nascondo i loghi dei giochi nella tabella */
     .table-logo-box{
         visibility: hidden;
+    }
+    
+    /* Imposto l'altezza degli elementi della tabella' */
+    .table tr{
+        height: 28px;
     }
     
     /* Titoli nella pagina descrizione */
