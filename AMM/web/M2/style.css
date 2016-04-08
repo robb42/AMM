@@ -634,14 +634,7 @@ h1, h2, h3{
     
     /* Loghi dei giochi nella tabella */
     .table-logo-box{
-        text-align: left;
-        width: 115px;
-        height: 56px;
-    }
-    .table-logo-bg{
-        background-size: auto 100%;
-        width: 115px;
-        height: 56px;
+        visibility: none;
     }
     
     /* Titoli nella pagina descrizione */
