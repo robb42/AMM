@@ -632,9 +632,9 @@ h1, h2, h3{
         height: 28px;
     }
     
-    /* Loghi dei giochi nella tabella */
+    /* Nascondo i loghi dei giochi nella tabella */
     .table-logo-box{
-        visibility: none;
+        visibility: hidden;
     }
     
     /* Titoli nella pagina descrizione */
