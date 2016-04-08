@@ -153,11 +153,6 @@ a:hover{
     background-color: #568B8D;
 }
 
-/* Box contenente il carrello */
-.table-cart{
-    width: 50px;
-}
-
 h1, h2, h3{
     color: #445E5F;
 }
@@ -350,6 +345,11 @@ h1, h2, h3{
         width: 115px;
         height: 56px;
     }
+
+    /* Box contenente il carrello */
+    .table-cart{
+        width: 50px;
+    }
     
     /* Titoli nella pagina descrizione */
     .description-title{
@@ -514,6 +514,11 @@ h1, h2, h3{
         width: 115px;
         height: 56px;
     }
+
+    /* Box contenente il carrello */
+    .table-cart{
+        width: 50px;
+    }
     
     /* Titoli nella pagina descrizione */
     .description-title{
@@ -641,6 +646,11 @@ h1, h2, h3{
      .table tr{
         height: 28px;
     }
+
+    /* Box contenente il carrello */
+    .table-cart{
+        width: 50px;
+    }
     
     /* Titoli nella pagina descrizione */
     .description-title{
@@ -767,6 +777,11 @@ h1, h2, h3{
     /* Imposto l'altezza degli elementi della tabella' */
     .table tr{
         height: 28px;
+    }
+
+    /* Box contenente il carrello */
+    .table-cart{
+        width: 40px;
     }
     
     /* Titoli nella pagina descrizione */
