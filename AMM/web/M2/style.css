@@ -561,7 +561,7 @@ h1, h2, h3{
     
     #header{
         /* Altezza della sidebar */
-        height: 30px;
+        height: 40px;
     }
 
     #page{
@@ -618,8 +618,8 @@ h1, h2, h3{
         margin: 0px;
         padding-right: 10px;
         padding-left: 10px;
-        /* Per centrare il testo verticalmente deve essere pari all'height dell'header */
-        line-height: 30px;
+        /* Per avere due righe di testoo centrate verticalmente de'vessere la metà dell'header height' */
+        line-height: 20px;
     }
 
     .table{
@@ -664,7 +664,7 @@ h1, h2, h3{
 
     /* Secondo tipo di elemento del form */
     .form-element2{
-        width: 48%;
+        width: 47%;
         height: 30px;
         padding-right: 3px;
         padding-left: 3px;
@@ -672,7 +672,7 @@ h1, h2, h3{
 
     /* Campo textarea del form */
     .form-textarea{
-        width: 99%;
+        width: 98%;
         height: 200px;
         padding-right: 3px;
         padding-left: 3px;
