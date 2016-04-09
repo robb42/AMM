@@ -562,7 +562,7 @@ h1, h2, h3{
 }
 
 /* CSS per pagine >480 & <600 */
-@media only screen and (min-width: 420px) and (max-width: 600px){
+@media only screen and (min-width: 430px) and (max-width: 600px){
     
     #header{
         /* Altezza della sidebar */
@@ -623,7 +623,7 @@ h1, h2, h3{
         margin: 0px;
         padding-right: 10px;
         padding-left: 10px;
-        /* Per avere due righe di testoo centrate verticalmente de'vessere la metà dell'header height' */
+        /* Per centrare il testo verticalmente deve essere pari all'header height */
         line-height: 40px;
     }
 
@@ -694,7 +694,7 @@ h1, h2, h3{
 }
 
 /* CSS per pagine <480 */
-@media only screen and (max-width: 420px){
+@media only screen and (max-width: 430px){
     
     #header{
         /* Altezza della sidebar */
@@ -753,8 +753,8 @@ h1, h2, h3{
     .navbar ul li{
         font-size: 1.1em;
         margin: 0px;
-        padding-right: 25px;
-        padding-left: 25px;
+        padding-right: 30px;
+        padding-left: 30px;
         /* Per avere due righe di testo centrate verticalmente dev'essere la metà dell'header height' */
         line-height: 20px;
     }
