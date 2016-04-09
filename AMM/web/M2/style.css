@@ -753,8 +753,8 @@ h1, h2, h3{
     .navbar ul li{
         font-size: 1.1em;
         margin: 0px;
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 28px;
+        padding-left: 28px;
         /* Per avere due righe di testo centrate verticalmente dev'essere la metà dell'header height' */
         line-height: 20px;
     }
