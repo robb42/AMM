@@ -305,6 +305,7 @@ h1, h2, h3{
     
     #sidebar1 ul{
         margin-left: 10px;
+        list-style: none;
     }
     #sidebar1 ul li{
         text-align: left;
