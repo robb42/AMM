@@ -235,7 +235,7 @@ h1, h2, h3{
     color: black;
 }
 
-/* CSS per pagine >HD */
+/* CSS per pagine >1024 */
 @media only screen and (min-width: 1024px){
     
     #header{
@@ -393,7 +393,7 @@ h1, h2, h3{
     }
 }
 
-/* CSS per pagine >600 & <HD */
+/* CSS per pagine >600 & <1024 */
 @media only screen and (min-width: 600px) and (max-width: 1024px){
     
     #header{
@@ -562,7 +562,7 @@ h1, h2, h3{
     }
 }
 
-/* CSS per pagine >480 & <600 */
+/* CSS per pagine >430 & <600 */
 @media only screen and (min-width: 430px) and (max-width: 600px){
     
     #header{
@@ -694,7 +694,7 @@ h1, h2, h3{
     }
 }
 
-/* CSS per pagine <480 */
+/* CSS per pagine <430 */
 @media only screen and (max-width: 430px){
     
     #header{
