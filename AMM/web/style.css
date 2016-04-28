@@ -1,0 +1,827 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4-apr-2016, 15.35.12
+    Author     : rober
+*/
+    
+
+/* Importo Font */
+@font-face{
+    font-family: 'roboto';
+    src: url('Fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'robotoLight';
+    src: url('Fonts/Roboto-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'robotoCondensed';
+    src: url('Fonts/RobotoCondensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'robotoCondensedLight';
+    src: url('Fonts/RobotoCondensed-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Importo FontAwesome per le icone */
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('Fonts/FontAwesome/fontawesome-webfont.eot');
+    src: url('Fonts/FontAwesome/fontawesome-webfont.eot') format('embedded-opentype'), url('Fonts/FontAwesome/fontawesome-webfont.woff2') format('woff2'), url('Fonts/FontAwesome/fontawesome-webfont.woff') format('woff'), url('Fonts/FontAwesome/fontawesome-webfont.ttf') format('truetype'), url('Fonts/FontAwesome/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* Classi di FA */
+.shopping-cart:before{
+    font-family: FontAwesome;
+    content: "\f07a";
+}
+
+/* Struttura generale */
+html, body{
+    font-family: robotoCondensedLight;
+    margin: 0;
+}
+
+body{
+    /* Aggiungo un'immagine di sfondo' */
+    background: url(Images/bg.jpg) no-repeat;
+    /* Aggiungo un colore di sfondo per quando la pagina superi l'immagine' */
+    background-color: #205a5c;
+    background-size: 100%;
+}
+
+#header{
+    /* Imposto l'header per restare sempre in cima alla pagina */
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    background-color: #205a5c;
+    border-bottom: 1px solid #154344;
+}
+
+#page{
+    position: relative;
+    text-align: left;
+    background-color: #609C9E;
+    bottom: 0;
+}
+
+#sidebar1{
+    text-align: center;
+}
+
+#sidebar2{
+    text-align: center;
+}
+
+#footer{
+    position: relative;
+    background: #2B797C;
+    width: 100%;
+    text-align: center;
+    color: #7ac2c7;
+    bottom: 0;
+    left: 0;
+}
+#footer p{
+    display: block;
+    margin: auto;
+}
+
+/* Imposto la visualizzazione dei link */
+a:link, a:visited{
+    text-decoration: none;
+    color: #374141;
+}
+a:hover{
+    /* Rimuovo le decorazioni varie, e aggiungo manualmente una barra da 1px sotto */
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+/* Link nella Navbar */
+.title a:link, .title a:visited{
+    color: #cdeaff;
+}
+
+/* Imposto la visualizzazione della Navbar */
+.navbar{
+    list-style: none;
+    margin: 0;
+}
+.navbar ul{
+    position: relative;
+    margin: auto;
+    padding-left:0;
+}
+.navbar ul li{
+    position: relative;
+    vertical-align: middle;
+    font-family: robotoLight;
+    text-transform: uppercase;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Imposto la visualizzazione della tabella in client */
+.table{
+    width: 100%;
+    text-align: center;
+    border-collapse: separate;
+}
+.table tr:nth-child(odd){
+    background-color: #72B4B6;
+}
+.table tr:nth-child(even){
+    background-color: #568B8D;
+}
+
+h1, h2, h3{
+    color: #445E5F;
+}
+
+/* Titolo Vapore presente nella pagina descrizione */
+#vapore{
+    background-color: #72B4B6;
+    text-align: center;
+}
+
+/* Titoli presenti nella pagina descrizione */
+.description-title{
+    background-color: #72B4B6;
+}
+
+/* Imposto la visualizzazione dei form */
+.form{
+    width: 100%;
+    text-align: center;
+    border: 0;
+    border-collapse: collapse;
+}
+.form ul{
+    width: 100%;
+    list-style: none;
+    display: block;
+    padding: 0;
+}
+.form ul li{
+    display: inline-block;
+    width:100%;
+}
+
+.form-left{
+    /* Se voglio che l'elemento sia allineato a sinistra' */
+    float: left;
+}
+.form-right{
+    /* Se voglio che l'elemento sia allineato a destra */
+    float: right;
+}
+
+/* Primo tipo di elemento del form */
+.form-element{
+    padding: 0;
+    border: 0;
+    color: black;
+    background-color: #72B4B6;
+}
+
+/* Secondo tipo di elemento del form */
+.form-element2{
+    padding: 0;
+    border: 0;
+    color: black;
+    background-color: #72B4B6;
+}
+
+/* Campo textarea del form */
+.form-textarea{
+    padding: 0;
+    border: 0;
+    color: black;
+    background-color: #72B4B6;
+}
+
+/* Campo submit del form */
+.form-submit{
+    border: 0;
+    background-color: #72B4B6;
+}
+
+.form-element:focus, .form-element2:focus, .form-textarea:focus, .form-submit:focus{
+    background-color: #6AA0A2;
+}
+
+/* Imposto la visualizzazione del placeholder nei form */
+*::-webkit-input-placeholder{
+    opacity: 0.8;
+    color: black;
+}
+
+/* CSS per pagine >1024 */
+@media only screen and (min-width: 1024px){
+    
+    #header{
+        /* Altezza della sidebar */
+        height: 50px;
+    }
+
+    #page{
+        /* Larghezza della pagina */
+        width: 950px;
+        height: auto;
+        
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px;
+    }
+    
+    #sidebar1{
+        /* Posiziono prima la sidebar a sinistra */
+        float: left;
+        width: 20%;
+        
+        padding-top: 70px;
+        padding-right: 5px;
+        padding-bottom: 30px;
+    }
+
+    #sidebar2{
+        /* Posiziono seconda la sidebar a destra */
+        float: right;
+        width: 20%;
+        
+        padding-top: 70px;
+        padding-left: 5px;
+        padding-bottom: 30px;
+    }
+
+    #content{
+        height: 100%;
+        
+        margin-right: 20%;
+        margin-left: 20%;
+        padding-top: 40px;
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-bottom: 30px;
+    }
+
+    #footer{
+        /* Altezza del footer */
+        height: 30px;
+        font-size: 1.4em;
+        /* Per centrare il testo verticalmente deve essere pari ad height */
+        line-height: 30px;
+    }
+
+    /* Testo nella Navbar */
+    .navbar ul li{
+        font-size: 1.4em;
+        margin: 0px;
+        padding-right: 20px;
+        padding-left: 20px;
+        /* Per centrare il testo verticalmente deve essere pari all'height dell'header */
+        line-height: 50px;
+    }
+    
+    #sidebar1 ul{
+        margin-left: 10px;
+        list-style: none;
+    }
+    #sidebar1 ul li{
+        text-align: left;
+    }
+    
+    #sidebar2 table{
+        border-spacing: 0 5px;
+        width: 100%;
+        text-align: center;
+        border-collapse: separate;
+    }
+    
+    /* Loghi dei giochi in saldo */
+    .game-logo-sale{
+        background-size: auto 100%;
+        width: 140px;
+        height: 65px;
+    }
+
+    .table{
+        font-size: 0.8em;
+        border-spacing: 0 5px;
+    }
+    
+    /* Intestazione della tabella' */
+    .table-head{
+        height: 28px;
+    }
+    
+    /* Loghi dei giochi nella tabella */
+    .table-logo-box{
+        text-align: left;
+        width: 115px;
+        height: 56px;
+    }
+    .table-logo-bg{
+        background-size: auto 100%;
+        width: 115px;
+        height: 56px;
+    }
+
+    /* Box contenente il carrello */
+    .table-cart{
+        width: 50px;
+    }
+    
+    /* Titoli nella pagina descrizione */
+    .description-title{
+        padding-left: 30px;
+    }
+    
+    /* Altezza del bg del titolo Vapore nella pagina descrizione */
+    #vapore{
+        height: 40px;
+    }
+
+    /* Primo tipo di elemento del form */
+    .form-element{
+        width: 40%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Secondo tipo di elemento del form */
+    .form-element2{
+        width: 48%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo textarea del form */
+    .form-textarea{
+        width: 99%;
+        height: 200px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo submit del form */
+    .form-submit{
+        width: 14%;
+        height: 30px;
+    }
+}
+
+/* CSS per pagine >600 & <1024 */
+@media only screen and (min-width: 600px) and (max-width: 1024px){
+    
+    #header{
+        /* Altezza della sidebar */
+        height: 50px;
+    }
+
+    #page{
+        /* Larghezza della pagina */
+        width: 90%;
+        height: auto;
+        
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px;
+    }
+    
+    #sidebar1{
+        /* Posiziono la prima sidebar a sinistra */
+        float: left;
+        width: 10%;
+        margin-left: 5%;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    #sidebar2{
+        /* Posiziono la seconda sidebar a sinistra, sotto la prima */
+        float: left;
+        clear:both;
+        width: 10%;
+        text-align: center;
+        margin-left: 2%;
+        padding-top: 0px;
+        padding-bottom: 30px;
+    }
+
+    #content{
+        height: 100%;
+        
+        margin-left: 20%;
+        padding-top: 30px;
+        padding-right: 5px;
+        padding-left: 10px;
+        padding-bottom: 30px;
+    }
+
+    #footer{
+        /* Altezza del footer */
+        height: 30px;
+        font-size: 1.4em;
+        /* Per centrare il testo verticalmente deve essere pari ad height */
+        line-height: 30px;
+    }
+    
+    h1{
+        font-size: 1.3em;
+    }
+    h2{
+        font-size: 1.2em;
+    }
+    h3{
+        font-size: 1.1em;
+    }
+    
+    /* Testo nella Navbar */
+    .navbar ul li{
+        font-size: 1.2em;
+        margin: 0px;
+        padding-right: 15px;
+        padding-left: 15px;
+        /* Per centrare il testo verticalmente deve essere pari all'height dell'header */
+        line-height: 50px;
+    }
+    
+    #sidebar1 ul{
+        list-style: none;
+        display: block;
+        padding-top: 10px;
+        padding-left: 0;
+    }
+    #sidebar1 ul li{
+        text-align: left;
+    }
+    
+    #sidebar2 table{
+        border-spacing: 0 5px;
+        width: 100%;
+        text-align: center;
+        border-collapse: separate;
+    }
+    
+    /* Loghi dei giochi in saldo */
+    .game-logo-sale{
+        background-size: auto 100%;
+        width: 101px;
+        height: 47px;
+    }
+
+    .table{
+        font-size: 0.8em;
+        border-spacing: 0 5px;
+    }
+    
+    /* Intestazione della tabella' */
+    .table-head{
+        height: 28px;
+    }
+    
+    /* Loghi dei giochi nella tabella */
+    .table-logo-box{
+        text-align: left;
+        width: 115px;
+        height: 56px;
+    }
+    .table-logo-bg{
+        background-size: auto 100%;
+        width: 115px;
+        height: 56px;
+    }
+
+    /* Box contenente il carrello */
+    .table-cart{
+        width: 50px;
+    }
+    
+    /* Titoli nella pagina descrizione */
+    .description-title{
+        padding-left: 30px;
+    }
+    
+    /* Altezza del bg del titolo Vapore nella pagina descrizione */
+    #vapore{
+        height: 30px;
+    }
+
+    /* Primo tipo di elemento del form */
+    .form-element{
+        width: 40%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Secondo tipo di elemento del form */
+    .form-element2{
+        width: 48%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo textarea del form */
+    .form-textarea{
+        width: 99%;
+        height: 200px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo submit del form */
+    .form-submit{
+        width: 14%;
+        height: 30px;
+    }
+}
+
+/* CSS per pagine >430 & <600 */
+@media only screen and (min-width: 430px) and (max-width: 600px){
+    
+    #header{
+        /* Altezza della sidebar */
+        height: 40px;
+    }
+
+    #page{
+        /* Larghezza della pagina */
+        width: 100%;
+        height: auto;
+        
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px;
+    }
+    
+    #sidebar1{
+        /* Nascondo la prima sidebar */
+        display: none;
+    }
+
+    #sidebar2{
+        /* Nascondo la seconda sidebar */
+        display: none;
+    }
+
+    #content{
+        height: 100%;
+        
+        padding-top: 20px;
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-bottom: 20px;
+    }
+
+    #footer{
+        /* Altezza del footer */
+        height: 20px;
+        font-size: 1.2em;
+        /* Per centrare il testo verticalmente deve essere pari ad height */
+        line-height: 20px;
+    }
+    
+    h1{
+        font-size: 1.2em;
+    }
+    h2{
+        font-size: 1.1em;
+    }
+    h3{
+        font-size: 1.1em;
+    }
+    
+    /* Testo nella Navbar */
+    .navbar ul li{
+        font-size: 1.1em;
+        margin: 0px;
+        padding-right: 10px;
+        padding-left: 10px;
+        /* Per centrare il testo verticalmente deve essere pari all'header height */
+        line-height: 40px;
+    }
+
+    .table{
+        font-size: 0.8em;
+        border-spacing: 0 5px;
+    }
+    
+    /* Intestazione della tabella' */
+   .table-head{
+        height: 28px;
+    }
+    
+    /* Nascondo i loghi dei giochi nella tabella */
+    .table-logo-box{
+        visibility: hidden;
+    }
+    
+    /* Imposto l'altezza degli elementi della tabella' */
+     .table tr{
+        height: 28px;
+    }
+
+    /* Box contenente il carrello */
+    .table-cart{
+        width: 50px;
+    }
+    
+    /* Titoli nella pagina descrizione */
+    .description-title{
+        padding-left: 30px;
+    }
+    
+    /* Altezza del bg del titolo Vapore nella pagina descrizione */
+    #vapore{
+        height: 30px;
+    }
+
+    /* Primo tipo di elemento del form */
+    .form-element{
+        width: 40%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Secondo tipo di elemento del form */
+    .form-element2{
+        width: 47%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo textarea del form */
+    .form-textarea{
+        width: 98%;
+        height: 200px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo submit del form */
+    .form-submit{
+        width: 14%;
+        height: 30px;
+    }
+}
+
+/* CSS per pagine <430 */
+@media only screen and (max-width: 430px){
+    
+    #header{
+        /* Altezza della sidebar */
+        height: 40px;
+    }
+
+    #page{
+        /* Larghezza della pagina */
+        width: 100%;
+        height: auto;
+        
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px;
+    }
+    
+    #sidebar1{
+        /* Nascondo la prima sidebar */
+        display: none;
+    }
+
+    #sidebar2{
+        /* Nascondo la seconda sidebar */
+        display: none;
+    }
+
+    #content{
+        height: 100%;
+        
+        padding-top: 20px;
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-bottom: 20px;
+    }
+
+    #footer{
+        /* Altezza del footer */
+        height: 20px;
+        font-size: 1.2em;
+        /* Per centrare il testo verticalmente deve essere pari ad height */
+        line-height: 20px;
+    }
+    
+    h1{
+        font-size: 1.2em;
+    }
+    h2{
+        font-size: 1.1em;
+    }
+    h3{
+        font-size: 1.1em;
+    }
+    
+    /* Testo nella Navbar */
+    .navbar ul li{
+        font-size: 1.1em;
+        margin: 0px;
+        padding-right: 28px;
+        padding-left: 28px;
+        /* Per avere due righe di testo centrate verticalmente dev'essere la metà dell'header height' */
+        line-height: 20px;
+    }
+
+    .table{
+        font-size: 0.8em;
+        border-spacing: 0 5px;
+    }
+    
+    /* Intestazione della tabella' */
+    .table-head{
+        height: 28px;
+    }
+    
+    /* Nascondo i loghi dei giochi nella tabella */
+    .table-logo-box{
+        visibility: hidden;
+    }
+    
+    /* Imposto l'altezza degli elementi della tabella' */
+    .table tr{
+        height: 28px;
+    }
+
+    /* Box contenente il carrello */
+    .table-cart{
+        width: 40px;
+    }
+    
+    /* Titoli nella pagina descrizione */
+    .description-title{
+        padding-left: 30px;
+    }
+    
+    /* Altezza del bg del titolo Vapore nella pagina descrizione */
+    #vapore{
+        height: 30px;
+    }
+
+    /* Primo tipo di elemento del form */
+    .form-element{
+        width: 40%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Secondo tipo di elemento del form */
+    .form-element2{
+        width: 47%;
+        height: 30px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo textarea del form */
+    .form-textarea{
+        width: 98%;
+        height: 200px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    /* Campo submit del form */
+    .form-submit{
+        width: 14%;
+        height: 30px;
+    }
+}
