@@ -30,7 +30,7 @@ public class GocceFactory {
         
         Prodotto gioco1 = new Prodotto();
         gioco1.setId(0);
-        gioco1.setNome("Mezza-Vita");
+        gioco1.setNome("Squadra Fortezza 2");
         gioco1.setUrlImmagine("Images/001.jpg");
         gioco1.setDescrizione("Boh bello");
         gioco1.setQuantita(5);
@@ -55,6 +55,7 @@ public class GocceFactory {
         cliente1.setUsername("Ayy");
         cliente1.setPassword("Lmao");
         cliente1.setId(0);
+        listaClienti.add(cliente1);
     }
 
     /**
@@ -138,8 +139,7 @@ public class GocceFactory {
         return null;
     }
     
-    public ArrayList<Goccia> getUserList() 
-    {
+    public ArrayList<Goccia> getListaGocce() {
         ArrayList<Goccia> listaGocce = new ArrayList<Goccia>();
         
         listaGocce.addAll(listaVenditori);

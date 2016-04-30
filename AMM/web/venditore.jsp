@@ -1,3 +1,10 @@
+<%-- 
+    Document   : venditore
+    Created on : 30-apr-2016, 2.23.23
+    Author     : rober
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -17,16 +24,7 @@ and open the template in the editor.
         
         <!-- NavBar -->
         <div id="header">
-            <nav class="navbar">
-                <div>
-                    <ul>
-                        <li id="descrizione" class="title"><a href="descrizione.html">Descrizione</a></li>
-                        <li id="cliente" class="title"><a href="cliente.html">Cliente</a></li>
-                        <li id="venditore" class="title"><a href="venditore.html">Venditore</a></li>
-                        <li id="login" class="title"><a href="login.html">Login</a></li>
-                    </ul>
-                </div>
-            </nav>
+            <jsp:include page="Resources/navbar.jsp"/>
         </div>
         
         <div id="page">
@@ -34,15 +32,24 @@ and open the template in the editor.
             <div id="sidebar1"></div>
             
             <!--  sidebar 2 -->
-            <div id="sidebar2"></div>
+            <div id="sidebar2">
+                <jsp:include page="Resources/sidebar2.jsp"/>
+            </div>
             
             <!-- Content -->
             <div id="content">
                 <form method="post" class="form">
                     <ul>
                         <li>
-                            <input type="text" name="Username" id="username" placeholder="Username" class="form-element form-left">
-                            <input type="password" name="Password" id="password" placeholder="Password" class="form-element">
+                            <input type="text" name="NomeProdotto" id="nome" placeholder="Nome Prodotto" class="form-element2 form-left">
+                            <input type="text" name="URLImmagine" id="url" placeholder="URL immagine" class="form-element2 form-right">
+                        </li>
+                        <li>
+                            <textarea rows="3" cols="25" name="Descrizione" id="description" placeholder="Descrizione" class="form-textarea"></textarea>
+                        </li>
+                        <li>
+                            <input type="number" name="Quantita" id="quantita" placeholder="Quantità" class="form-element form-left">
+                            <input type="number" step="0.01" name="Prezzo" id="prezzo" placeholder="Prezzo" class="form-element">
                             <input type="submit" class="form-submit form-right">
                         </li>
                     </ul>
@@ -51,14 +58,10 @@ and open the template in the editor.
             
             <div style="clear: both; width: 0px; height: 0px;"></div>
             <!--  footer -->
-            <footer>
-                <div id="footer">
-                    <p>
-                        VAPORE GIOCHI 2016
-                    </p>
-                </div>
-            </footer>
-        
+            <div id="footer">
+                <jsp:include page="Resources/footer.jsp"/>
+            </div>
+            
         </div>
         
     </body>

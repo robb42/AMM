@@ -24,7 +24,7 @@ public abstract class Goccia {
         cognome = "";
         username="";
         password="";
-        saldo.setSaldo(0);
+        saldo = new Portafoglio();
     }
 
     /**

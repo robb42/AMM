@@ -11,6 +11,10 @@ package vapore.software.Classi;
  */
 public class Portafoglio {
     private int saldo;
+    
+    public Portafoglio(){
+        this.saldo = 0;
+    }
 
     /**
      * @return the saldo
