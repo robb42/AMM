@@ -7,6 +7,7 @@ package vapore.software;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,14 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import vapore.software.Classi.GocceFactory;
+import vapore.software.Classi.Goccia;
 import vapore.software.Classi.Prodotto;
 
 /**
  *
  * @author rober
  */
-@WebServlet(name = "Venditore", urlPatterns = {"/Venditore"})
-public class Venditore extends HttpServlet {
+@WebServlet(name = "Cliente", urlPatterns = {"/Cliente"})
+public class Cliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,31 +40,39 @@ public class Venditore extends HttpServlet {
         
         HttpSession session = request.getSession(true);
         
-        if(request.getParameter("Submit") != null) {
-            Prodotto p = new Prodotto();
-            String nomeprodotto = request.getParameter("NomeProdotto");
-            String urlimmagine = request.getParameter("URLImmagine");
-            String descrizione = request.getParameter("Descrizione");
-            int quantita = Integer.parseInt(request.getParameter("Quantita"));
-            Double prezzo = Double.parseDouble(request.getParameter("Prezzo"));
+        if(request.getParameter("GiocoID") != null) {
+            int giocoid = Integer.parseInt(request.getParameter("GiocoID"));
             
-            p.setNome(nomeprodotto);
-            p.setUrlImmagine(urlimmagine);
-            p.setDescrizione(descrizione);
-            p.setQuantita(quantita);
-            p.setPrezzo(prezzo);
-            
-            request.setAttribute("prodotto", p);
-            request.getRequestDispatcher("venditore_inserito.jsp").forward(request, response);  
+            ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti();
+            for(Prodotto p : listaProdotti) {
+                if(p.getId() == giocoid){
+                    if(request.getParameter("Submit") != null) {
+                        Double saldo = (Double) session.getAttribute("saldo");
+                        
+                        if(saldo >= p.getPrezzo()){
+                            saldo -= p.getPrezzo();
+                            session.setAttribute("saldo", saldo);
+                            request.setAttribute("acquisto", true);
+                        }
+                        else{
+                            request.setAttribute("error", true);
+                        }
+                    }
+                    
+                    request.setAttribute("prodotto", p);
+                    request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
+                }
+            }
         }
         
         if(session.getAttribute("loggedIn") != null){
-            if(session.getAttribute("classe").equals("venditore")) {
-                request.getRequestDispatcher("venditore.jsp").forward(request, response);
+            if(session.getAttribute("classe").equals("cliente")) {
+                request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdotti());
+                request.getRequestDispatcher("cliente.jsp").forward(request, response);
             }
         }
         request.setAttribute("error", true);
-        request.getRequestDispatcher("venditore.jsp").forward(request, response);  
+        request.getRequestDispatcher("cliente.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

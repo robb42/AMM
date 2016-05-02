@@ -36,6 +36,14 @@ public class GocceFactory {
         gioco1.setQuantita(5);
         gioco1.setPrezzo(9.99);
         listaProdotti.add(gioco1);
+        Prodotto gioco2 = new Prodotto();
+        gioco2.setId(1);
+        gioco2.setNome("Mezza-Vita");
+        gioco2.setUrlImmagine("Images/002.jpg");
+        gioco2.setDescrizione("Boh bello");
+        gioco2.setQuantita(5);
+        gioco2.setPrezzo(9.99);
+        listaProdotti.add(gioco2);
         
         Venditore venditore1 = new Venditore();
         venditore1.setNome("Gabe");
@@ -43,6 +51,7 @@ public class GocceFactory {
         venditore1.setUsername("Gaben");
         venditore1.setPassword("3");
         venditore1.setId(0);
+        venditore1.setSaldo(30.0);
         venditore1.addProdottoInVendita(gioco1);
         /*ArrayList<Prodotto> arrayGiochi1 = new ArrayList<Prodotto>();
         arrayGiochi1.add(gioco1);
@@ -55,6 +64,7 @@ public class GocceFactory {
         cliente1.setUsername("Ayy");
         cliente1.setPassword("Lmao");
         cliente1.setId(0);
+        cliente1.setSaldo(30.0);
         listaClienti.add(cliente1);
     }
 

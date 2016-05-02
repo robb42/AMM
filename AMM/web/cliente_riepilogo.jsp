@@ -1,6 +1,6 @@
 <%-- 
-    Document   : venditore
-    Created on : 30-apr-2016, 2.23.23
+    Document   : cliente
+    Created on : 30-apr-2016, 2.20.46
     Author     : rober
 --%>
 
@@ -22,7 +22,6 @@ and open the template in the editor.
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" >
     </head>
     <body>
-        
         <!-- NavBar -->
         <div id="header">
             <jsp:include page="Resources/navbar.jsp"/>
@@ -40,27 +39,55 @@ and open the template in the editor.
             <!-- Content -->
             <div id="content">
                 <c:choose>
+                    <c:when test="${acquisto == true}">
+                        <div class="error">
+                            <p>
+                                Acquisto effettuato con successo
+                            </p>
+                        </div>
+                    </c:when>
                     <c:when test="${error == true}">
                         <div class="error">
                             <p>
-                                Loggati come venditore per vedere questa pagina
+                                Acquisto fallito, controlla di avere un saldo sufficiente
                             </p>
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <form method="post" action="Venditore" class="form">
+                        <table class="table">
+                            <tr class="table-head">
+                                <th colspan="2">
+                                    Nome
+                                </th>
+                                <th>
+                                    Disponibili
+                                </th>
+                                <th>
+                                    Prezzo
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="table-logo-box">
+                                    <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
+                                </th>
+                                <th>
+                                    ${prodotto.getNome()}
+                                </th>
+                                <th>
+                                    ${prodotto.getQuantita()}
+                                </th>
+                                <th>
+                                    ${prodotto.getPrezzo()}
+                                </th>
+                            </tr>
+
+                        </table>
+                        <p>${prodotto.getDescrizione()}</p>
+                        <form method="post" action="Cliente?GiocoID=${prodotto.getId()}" class="form">
                             <ul>
                                 <li>
-                                    <input type="text" name="NomeProdotto" id="nome" placeholder="Nome Prodotto" class="form-element2 form-left">
-                                    <input type="text" name="URLImmagine" id="url" placeholder="URL immagine" class="form-element2 form-right">
-                                </li>
-                                <li>
-                                    <textarea rows="3" cols="25" name="Descrizione" id="description" placeholder="Descrizione" class="form-textarea"></textarea>
-                                </li>
-                                <li>
-                                    <input type="number" name="Quantita" id="quantita" placeholder="Quantità" class="form-element form-left">
-                                    <input type="number" step="0.01" name="Prezzo" id="prezzo" placeholder="Prezzo" class="form-element">
-                                    <input type="submit" name="Submit" class="form-submit form-right">
+                                    <input type="submit" name="Submit" value="Procedi" class="form-submit form-right">
                                 </li>
                             </ul>
                         </form>

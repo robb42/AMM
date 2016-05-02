@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : 30-apr-2016, 2.23.14
+    Document   : venditore
+    Created on : 30-apr-2016, 2.23.23
     Author     : rober
 --%>
 
@@ -33,36 +33,42 @@ and open the template in the editor.
             <div id="sidebar1"></div>
             
             <!--  sidebar 2 -->
-            <div id="sidebar2"></div>
+            <div id="sidebar2">
+                <jsp:include page="Resources/sidebar2.jsp"/>
+            </div>
             
             <!-- Content -->
             <div id="content">
-                <c:choose>
-                    <c:when test="${usernameFound == 'no'}">
-                        <div class="error">
-                            <p>
-                                Username non trovato
-                            </p>
-                        </div>
-                    </c:when>
-                    <c:when test="${usernameFound == 'yes'}">
-                        <div class="error">
-                            <p>
-                                Password sbagliata
-                            </p>
-                        </div>
-                    </c:when>
-                </c:choose>
-                <form method="post" action="Login" class="form">
-                    <input type="hidden" name="cmd" value="login">
-                    <ul>
-                        <li>
-                            <input type="text" name="Username" id="username" placeholder="Username" class="form-element form-left">
-                            <input type="password" name="Password" id="password" placeholder="Password" class="form-element">
-                            <input type="submit" name="Submit" value="Login" class="form-submit form-right">
-                        </li>
-                    </ul>
-                </form>
+                <table class="table">
+                    <tr class="table-head">
+                        <th colspan="2">
+                            Nome
+                        </th>
+                        <th>
+                            Disponibili
+                        </th>
+                        <th>
+                            Prezzo
+                        </th>
+                    </tr>
+                    
+                    <tr>
+                        <th class="table-logo-box">
+                            <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
+                        </th>
+                        <th>
+                            ${prodotto.getNome()}
+                        </th>
+                        <th>
+                            ${prodotto.getQuantita()}
+                        </th>
+                        <th>
+                            ${prodotto.getPrezzo()}
+                        </th>
+                    </tr>
+                    
+                </table>
+                
             </div>
             
             <div style="clear: both; width: 0px; height: 0px;"></div>
@@ -70,7 +76,7 @@ and open the template in the editor.
             <div id="footer">
                 <jsp:include page="Resources/footer.jsp"/>
             </div>
-        
+            
         </div>
         
     </body>

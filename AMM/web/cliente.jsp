@@ -38,42 +38,53 @@ and open the template in the editor.
             
             <!-- Content -->
             <div id="content">
-                <table class="table">
-                    <tr class="table-head">
-                        <th colspan="2">
-                            Nome
-                        </th>
-                        <th>
-                            Disponibili
-                        </th>
-                        <th>
-                            Prezzo
-                        </th>
-                        <th class="table-cart">
-                        </th>
-                    </tr>
-                    
-                    <c:forEach var="prodotto" items="${listaProdotti}">
-                        <tr>
-                            <th class="table-logo-box">
-                                <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
-                            </th>
-                            <th>
-                                ${prodotto.getNome()}
-                            </th>
-                            <th>
-                                ${prodotto.getQuantita()}
-                            </th>
-                            <th>
-                                ${prodotto.getPrezzo()}
-                            </th>
-                            <th>
-                                <a href="cliente.jsp"><i class="shopping-cart"></i></a>
-                            </th>
-                        </tr>
-                    </c:forEach>
-                    
-                </table>
+                <c:choose>
+                    <c:when test="${error == true}">
+                        <div class="error">
+                            <p>
+                                Loggati come cliente per vedere questa pagina
+                            </p>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <table class="table">
+                            <tr class="table-head">
+                                <th colspan="2">
+                                    Nome
+                                </th>
+                                <th>
+                                    Disponibili
+                                </th>
+                                <th>
+                                    Prezzo
+                                </th>
+                                <th class="table-cart">
+                                </th>
+                            </tr>
+
+                            <c:forEach var="prodotto" items="${listaProdotti}">
+                                <tr>
+                                    <th class="table-logo-box">
+                                        <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
+                                    </th>
+                                    <th>
+                                        ${prodotto.getNome()}
+                                    </th>
+                                    <th>
+                                        ${prodotto.getQuantita()}
+                                    </th>
+                                    <th>
+                                        ${prodotto.getPrezzo()}
+                                    </th>
+                                    <th>
+                                        <a href="Cliente?GiocoID=${prodotto.getId()}"><i class="shopping-cart"></i></a>
+                                    </th>
+                                </tr>
+                            </c:forEach>
+
+                        </table>
+                    </c:otherwise>
+                </c:choose>
             </div>
             
             <div style="clear: both; width: 0px; height: 0px;"></div>

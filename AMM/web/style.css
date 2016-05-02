@@ -168,6 +168,16 @@ h1, h2, h3{
     background-color: #72B4B6;
 }
 
+/* Imposto la visualizzazione degli errori nella pagina di login */
+.error{
+    /* Altezza del box */
+    height: 40px;
+    background-color: #FDB7BE;
+    text-align: center;
+    /* Per centrare il testo verticalmente deve essere pari ad height */
+    line-height: 40px;
+}
+
 /* Imposto la visualizzazione dei form */
 .form{
     width: 100%;

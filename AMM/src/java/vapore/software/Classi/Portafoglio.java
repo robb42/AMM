@@ -10,31 +10,31 @@ package vapore.software.Classi;
  * @author rober
  */
 public class Portafoglio {
-    private int saldo;
+    private Double saldo;
     
     public Portafoglio(){
-        this.saldo = 0;
+        this.saldo = 0.0;
     }
 
     /**
      * @return the saldo
      */
-    public int getSaldo() {
+    public Double getSaldo() {
         return saldo;
     }
 
     /**
      * @param saldo the saldo to set
      */
-    public void setSaldo(int saldo) {
+    public void setSaldo(Double saldo) {
         this.saldo = saldo;
     }
     
-    public void increaseSaldo(int moneta) {
+    public void increaseSaldo(Double moneta) {
         this.saldo += moneta;
     }
     
-    public void decreaseSaldo(int moneta) {
+    public void decreaseSaldo(Double moneta) {
         this.saldo -= moneta;
     }
     

@@ -41,27 +41,41 @@ public class Login extends HttpServlet {
         HttpSession session = request.getSession(true);
         
         if(request.getParameter("Submit") != null) {
-            // Preleva i dati inviati
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
+            String usernameFound = "no";
             
             ArrayList<Goccia> listaGocce = GocceFactory.getInstance().getListaGocce();
             for(Goccia u : listaGocce) {
-                if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                    session.setAttribute("loggedIn", true);
-                    session.setAttribute("id", u.getId());
-                    
-                    if (u instanceof Venditore) {
-                        request.setAttribute("venditore", u);
-                        request.getRequestDispatcher("venditore.jsp").forward(request, response);
-                    }
-                    else {
-                        request.setAttribute("cliente", u);
-                        request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdotti());
-                        request.getRequestDispatcher("cliente.jsp").forward(request, response);  
+                if(u.getUsername().equals(username)) {
+                    usernameFound = "yes";
+                    if(u.getPassword().equals(password)){
+                        session.setAttribute("loggedIn", true);
+                        session.setAttribute("id", u.getId());
+                        session.setAttribute("nome", u.getNome());
+                        session.setAttribute("cognome", u.getCognome());
+                        session.setAttribute("saldo", u.getSaldo());
+
+                        if (u instanceof Venditore) {
+                            session.setAttribute("classe", "venditore");
+                            request.setAttribute("venditore", u);
+                            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                        }
+                        else {
+                            session.setAttribute("classe", "cliente");
+                            request.setAttribute("cliente", u);
+                            request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdotti());
+                            request.getRequestDispatcher("cliente.jsp").forward(request, response);  
+                        }
                     }
                 }
             }
+            request.setAttribute("usernameFound", usernameFound);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+        
+        if(session.getAttribute("loggedIn") != null){
+            session.invalidate();
         }
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }

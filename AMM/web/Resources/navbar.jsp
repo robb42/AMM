@@ -4,14 +4,22 @@
     Author     : rober
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <nav class="navbar">
     <div>
         <ul>
             <li id="descrizione" class="title"><a href="descrizione.jsp">Descrizione</a></li>
-            <li id="cliente" class="title"><a href="cliente.jsp">Cliente</a></li>
-            <li id="venditore" class="title"><a href="venditore.jsp">Venditore</a></li>
-            <li id="login" class="title"><a href="login.jsp">Login</a></li>
+            <li id="cliente" class="title"><a href="Cliente">Cliente</a></li>
+            <li id="venditore" class="title"><a href="Venditore">Venditore</a></li>
+            <c:choose>
+                <c:when test="${loggedIn == true}">
+                    <li id="login" class="title"><a href="Login">Logout</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li id="login" class="title"><a href="Login">Login</a></li>
+                </c:otherwise>
+            </c:choose>
         </ul>
     </div>
 </nav>

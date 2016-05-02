@@ -100,15 +100,15 @@ public abstract class Goccia {
     /**
      * @return the saldo
      */
-    public Portafoglio getSaldo() {
-        return saldo;
+    public Double getSaldo() {
+        return saldo.getSaldo();
     }
 
     /**
      * @param saldo the saldo to set
      */
-    public void setSaldo(Portafoglio saldo) {
-        this.saldo = saldo;
+    public void setSaldo(Double saldo) {
+        this.saldo.setSaldo(saldo);
     }
     
 }
