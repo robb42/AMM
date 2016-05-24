@@ -8,6 +8,8 @@ package vapore.software;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +24,23 @@ import vapore.software.Classi.Venditore;
  *
  * @author rober
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
+@WebServlet(name = "Login", urlPatterns = {"/Login"}, loadOnStartup = 0)
 public class Login extends HttpServlet {
+    
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
+    
+    @Override 
+    public void init(){
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        GocceFactory.getInstance().setConnectionString(dbConnection);
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,34 +60,30 @@ public class Login extends HttpServlet {
         if(request.getParameter("Submit") != null) {
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
-            String usernameFound = "no";
             
-            ArrayList<Goccia> listaGocce = GocceFactory.getInstance().getListaGocce();
-            for(Goccia u : listaGocce) {
-                if(u.getUsername().equals(username)) {
-                    usernameFound = "yes";
-                    if(u.getPassword().equals(password)){
-                        session.setAttribute("loggedIn", true);
-                        session.setAttribute("id", u.getId());
-                        session.setAttribute("nome", u.getNome());
-                        session.setAttribute("cognome", u.getCognome());
-                        session.setAttribute("saldo", u.getSaldo());
+            
+            Goccia u = GocceFactory.getInstance().getGoccia(username, password);
+            
+            if(u != null){
+                session.setAttribute("loggedIn", true);
+                session.setAttribute("id", u.getId());
+                session.setAttribute("nome", u.getNome());
+                session.setAttribute("cognome", u.getCognome());
+                session.setAttribute("saldo", u.getSaldo());
 
-                        if (u instanceof Venditore) {
-                            session.setAttribute("classe", "venditore");
-                            request.setAttribute("venditore", u);
-                            request.getRequestDispatcher("venditore.jsp").forward(request, response);
-                        }
-                        else {
-                            session.setAttribute("classe", "cliente");
-                            request.setAttribute("cliente", u);
-                            request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdotti());
-                            request.getRequestDispatcher("cliente.jsp").forward(request, response);  
-                        }
-                    }
+                if (u instanceof Venditore) {
+                    session.setAttribute("classe", "venditore");
+                    request.setAttribute("venditore", u);
+                    request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                }
+                else {
+                    session.setAttribute("classe", "cliente");
+                    request.setAttribute("cliente", u);
+                    request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdotti());
+                    request.getRequestDispatcher("cliente.jsp").forward(request, response);  
                 }
             }
-            request.setAttribute("usernameFound", usernameFound);
+            request.setAttribute("userFound", "no");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
         

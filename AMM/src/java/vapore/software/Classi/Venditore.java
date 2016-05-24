@@ -12,10 +12,12 @@ import java.util.ArrayList;
  * @author rober
  */
 public class Venditore extends Goccia{
+    private int venditoreId;
     private ArrayList<Prodotto> prodottiInVendita = new ArrayList<Prodotto>();
     
     public Venditore(){
         super();
+        venditoreId = 0;
     }
 
     /**
@@ -34,6 +36,20 @@ public class Venditore extends Goccia{
     
     public void addProdottoInVendita(Prodotto prodottoInVendita){
         this.prodottiInVendita.add(prodottoInVendita);
+    }
+
+    /**
+     * @return the venditoreId
+     */
+    public int getVenditoreId() {
+        return venditoreId;
+    }
+
+    /**
+     * @param venditoreId the venditoreId to set
+     */
+    public void setVenditoreId(int venditoreId) {
+        this.venditoreId = venditoreId;
     }
     
 }

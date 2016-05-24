@@ -16,6 +16,7 @@ public class Prodotto {
     private String descrizione;
     private int quantita;
     private double prezzo;
+    private int gocciaId;
 
     /**
      * @return the id
@@ -99,5 +100,19 @@ public class Prodotto {
      */
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
+    }
+
+    /**
+     * @return the gocciaId
+     */
+    public int getGocciaId() {
+        return gocciaId;
+    }
+
+    /**
+     * @param gocciaId the gocciaId to set
+     */
+    public void setGocciaId(int gocciaId) {
+        this.gocciaId = gocciaId;
     }
 }

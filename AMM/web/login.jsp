@@ -38,17 +38,10 @@ and open the template in the editor.
             <!-- Content -->
             <div id="content">
                 <c:choose>
-                    <c:when test="${usernameFound == 'no'}">
+                    <c:when test="${userFound == 'no'}">
                         <div class="error">
                             <p>
-                                Username non trovato
-                            </p>
-                        </div>
-                    </c:when>
-                    <c:when test="${usernameFound == 'yes'}">
-                        <div class="error">
-                            <p>
-                                Password sbagliata
+                                Utente non trovato
                             </p>
                         </div>
                     </c:when>

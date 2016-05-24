@@ -1,0 +1,32 @@
+[Connessione db]
+    username: username
+    password: pass
+
+
+[Goccia]
+Utente generico
+    nome
+    cognome
+    username
+    password
+    saldo
+
+[Venditore]
+Collegato con una relazione 1-1 con la suerclasse goccia
+
+[Cliente]
+Collegato con una relazione 1-1 con la suerclasse goccia
+
+
+[Prodotto]
+Prodotto posseduto da un venditore o da un cliente
+    nome
+    url immagine
+    descrizione
+    prezzo
+
+
+Relazione   prodotto-goccia
+                1       n
+Ogni utente puù possedere diverso prodotti, ma ogni prodotto può appartenere a
+un solo utente alla volta
