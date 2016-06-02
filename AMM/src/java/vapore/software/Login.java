@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import vapore.software.Classi.GocceFactory;
 import vapore.software.Classi.Goccia;
 import vapore.software.Classi.Venditore;
+import vapore.software.Classi.Cliente;
 
 /**
  *
@@ -61,7 +62,6 @@ public class Login extends HttpServlet {
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
             
-            
             Goccia u = GocceFactory.getInstance().getGoccia(username, password);
             
             if(u != null){
@@ -73,11 +73,13 @@ public class Login extends HttpServlet {
 
                 if (u instanceof Venditore) {
                     session.setAttribute("classe", "venditore");
+                    session.setAttribute("venditoreId", ((Venditore)u).getVenditoreId());
                     request.setAttribute("venditore", u);
                     request.getRequestDispatcher("venditore.jsp").forward(request, response);
                 }
                 else {
                     session.setAttribute("classe", "cliente");
+                    session.setAttribute("clienteId", ((Cliente)u).getClienteId());
                     request.setAttribute("cliente", u);
                     request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdotti());
                     request.getRequestDispatcher("cliente.jsp").forward(request, response);  
@@ -86,11 +88,13 @@ public class Login extends HttpServlet {
             request.setAttribute("userFound", "no");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+        else {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
         
         if(session.getAttribute("loggedIn") != null){
             session.invalidate();
         }
-        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

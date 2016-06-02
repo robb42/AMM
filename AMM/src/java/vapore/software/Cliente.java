@@ -44,25 +44,22 @@ public class Cliente extends HttpServlet {
             int giocoid = Integer.parseInt(request.getParameter("GiocoID"));
             
             ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti();
-            for(Prodotto p : listaProdotti) {
-                if(p.getId() == giocoid){
-                    if(request.getParameter("Submit") != null) {
-                        Double saldo = (Double) session.getAttribute("saldo");
-                        
-                        if(saldo >= p.getPrezzo()){
-                            saldo -= p.getPrezzo();
-                            session.setAttribute("saldo", saldo);
-                            request.setAttribute("acquisto", true);
-                        }
-                        else{
-                            request.setAttribute("error", true);
-                        }
-                    }
-                    
-                    request.setAttribute("prodotto", p);
-                    request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
+            Prodotto p = GocceFactory.getInstance().getProdottoById(giocoid);
+            if(request.getParameter("Submit") != null) {
+                Double saldo = (Double) session.getAttribute("saldo");
+
+                if(saldo >= p.getPrezzo()){
+                    saldo -= p.getPrezzo();
+                    session.setAttribute("saldo", saldo);
+                    request.setAttribute("acquisto", true);
+                }
+                else{
+                    request.setAttribute("error", true);
                 }
             }
+
+            request.setAttribute("prodotto", p);
+            request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
         }
         
         if(session.getAttribute("loggedIn") != null){

@@ -62,6 +62,9 @@ and open the template in the editor.
                                     <input type="number" step="0.01" name="Prezzo" id="prezzo" placeholder="Prezzo" class="form-element">
                                     <input type="submit" name="Submit" class="form-submit form-right">
                                 </li>
+                                <li>
+                                    <input type="submit" name="Gestione" value="Gestione Oggetti" class="form-submit form-right">
+                                </li>
                             </ul>
                         </form>
                     </c:otherwise>

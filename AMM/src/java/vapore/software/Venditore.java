@@ -7,6 +7,11 @@ package vapore.software;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,8 +57,33 @@ public class Venditore extends HttpServlet {
             p.setQuantita(quantita);
             p.setPrezzo(prezzo);
             
+            GocceFactory.getInstance().insertProdotto(p, (int)session.getAttribute("id"));
+            
             request.setAttribute("prodotto", p);
             request.getRequestDispatcher("venditore_inserito.jsp").forward(request, response);  
+        }
+        
+        if(request.getParameter("Gestione") != null) {
+            //Elenco solo i prodotti posseduti da questo venditore
+            
+            //request.setAttribute("prodotto", p);
+            //request.getRequestDispatcher("venditore_inserito.jsp").forward(request, response);  
+        }
+        
+        if(request.getParameter("GiocoID") != null) {
+            //Controllo che il prodotto sia realmente posseduto dal venditore
+            //Invio i dati aggiornati al server
+
+            //request.setAttribute("prodotto", p);
+            //request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
+        }
+        
+        if(request.getParameter("RimuoviGiocoID") != null) {
+            //Controllo che il prodotto sia realmente posseduto dal venditore
+            //Rimuovo il prodotto dal server
+
+            //request.setAttribute("prodotto", p);
+            //request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
         }
         
         if(session.getAttribute("loggedIn") != null){

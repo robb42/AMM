@@ -25,12 +25,6 @@ public class GocceFactory {
         }
         return singleton;
     }
-    // Lista Prodotti
-    private ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
-    // Lista Venditori
-    private ArrayList<Goccia> listaVenditori = new ArrayList<Goccia>();
-    // Lista Clienti
-    private ArrayList<Goccia> listaClienti = new ArrayList<Goccia>();
     // Variabile per la connessione al db
     private String connectionString;
     
@@ -77,42 +71,49 @@ public class GocceFactory {
     }
     
     public Goccia getGoccia(String username, String password) {
-        try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")){
+        try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
             // commando SQL
-            String query = "select * from goccia where " + "username=? and password=?";
+            String query =  "SELECT GOCCIA.ID as GOCCIAID,\n" +
+                                "GOCCIA.NOME as NOME,\n" +
+                                "GOCCIA.COGNOME as COGNOME,\n" +
+                                "GOCCIA.USERNAME as USERNAME,\n" +
+                                "GOCCIA.PASSWORD as PASSWORD,\n" +
+                                "CLIENTE.ID as CLIENTEID,\n" +
+                                "GOCCIA.SALDO as SALDO\n" +
+                            "FROM GOCCIA\n" +
+                            "JOIN CLIENTE ON CLIENTE.GOCCIAID = GOCCIA.ID\n" +
+                            "WHERE GOCCIA.USERNAME = ? AND GOCCIA.PASSWORD = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             // dati
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet set = stmt.executeQuery();
             
-            int gocciaId = set.getInt("id");
-            // controllo se l'utente è un cliente
-            query = "select id from cliente where " + "gocciaid = ?";
-            stmt = conn.prepareStatement(query);
-            stmt.setInt(1, gocciaId);
-            ResultSet setGoccia = stmt.executeQuery();
-            
-            if(setGoccia.next()){
+            if(set.next()){
                 Cliente cliente = new Cliente();
-                cliente.setId(set.getInt("id"));
-                cliente.setNome(set.getString("nome"));
-                cliente.setCognome(set.getString("cognome"));
-                cliente.setUsername(set.getString("username"));
-                cliente.setPassword(set.getString("password"));
-                cliente.setClienteId(setGoccia.getInt("id"));
-                cliente.setSaldo(set.getDouble("saldo"));
+                cliente.setId(set.getInt("GOCCIAID"));
+                cliente.setNome(set.getString("NOME"));
+                cliente.setCognome(set.getString("COGNOME"));
+                cliente.setUsername(set.getString("USERNAME"));
+                cliente.setPassword(set.getString("PASSWORD"));
+                cliente.setClienteId(set.getInt("CLIENTEID"));
+                cliente.setSaldo(set.getDouble("SALDO"));
                 
-                query = "select * from prodotto where gocciaid=" + set.getInt("id");
+                query = "SELECT PRODOTTO.ID as ID,\n" +
+                            "PRODOTTO.NOME as NOME,\n" +
+                            "PRODOTTO.URLIMMAGINE as URLIMMAGINE,\n" +
+                            "PRODOTTO.DESCRIZIONE as DESCRIZIONE,\n" +
+                            "PRODOTTO.PREZZO as PREZZO\n" +
+                        "FROM PRODOTTO\n" +
+                        "WHERE PRODOTTO.GOCCIAID = " + set.getInt("GOCCIAID");
                 Statement st = conn.createStatement();
                 ResultSet res = st.executeQuery(query);
-                Prodotto p = new Prodotto();
                 while(res.next()){
+                    Prodotto p = new Prodotto();
                     p.setId(res.getInt("id"));
                     p.setNome(res.getString("nome"));
                     p.setUrlImmagine(res.getString("urlimmagine"));
                     p.setDescrizione(res.getString("descrizione"));
-                    p.setQuantita(res.getInt("quantita"));
                     p.setPrezzo(res.getDouble("prezzo"));
                     cliente.addProdottoPosseduto(p);
                 }
@@ -120,40 +121,57 @@ public class GocceFactory {
             }
             
             // controllo se l'utente è un venditore
-            query = "select id from venditore where " + "gocciaid = ?";
+            query = "SELECT GOCCIA.ID as GOCCIAID,\n" +
+                        "GOCCIA.NOME as NOME,\n" +
+                        "GOCCIA.COGNOME as COGNOME,\n" +
+                        "GOCCIA.USERNAME as USERNAME,\n" +
+                        "GOCCIA.PASSWORD as PASSWORD,\n" +
+                        "VENDITORE.ID as VENDITOREID,\n" +
+                        "GOCCIA.SALDO as SALDO\n" +
+                    "FROM GOCCIA\n" +
+                    "JOIN VENDITORE ON VENDITORE.GOCCIAID = GOCCIA.ID\n" +
+                    "WHERE GOCCIA.USERNAME = ? AND GOCCIA.PASSWORD = ?";
             stmt = conn.prepareStatement(query);
-            stmt.setInt(1, gocciaId);
-            setGoccia = stmt.executeQuery();
+            // dati
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            set = stmt.executeQuery();
             
-            if(setGoccia.next()){
+            if(set.next()){
                 Venditore venditore = new Venditore();
-                venditore.setId(set.getInt("id"));
-                venditore.setNome(set.getString("nome"));
-                venditore.setCognome(set.getString("cognome"));
-                venditore.setUsername(set.getString("username"));
-                venditore.setPassword(set.getString("password"));
-                venditore.setVenditoreId(setGoccia.getInt("id"));
-                venditore.setSaldo(set.getDouble("saldo"));
+                venditore.setId(set.getInt("GOCCIAID"));
+                venditore.setNome(set.getString("NOME"));
+                venditore.setCognome(set.getString("COGNOME"));
+                venditore.setUsername(set.getString("USERNAME"));
+                venditore.setPassword(set.getString("PASSWORD"));
+                venditore.setVenditoreId(set.getInt("VENDITOREID"));
+                venditore.setSaldo(set.getDouble("SALDO"));
                 
-                query = "select * from prodotto where gocciaid=" + set.getInt("id");
+                query = "SELECT PRODOTTO.ID as ID,\n" +
+                            "PRODOTTO.NOME as NOME,\n" +
+                            "PRODOTTO.URLIMMAGINE as URLIMMAGINE,\n" +
+                            "PRODOTTO.DESCRIZIONE as DESCRIZIONE,\n" +
+                            "PRODOTTO.PREZZO as PREZZO\n" +
+                        "FROM PRODOTTO\n" +
+                        "WHERE PRODOTTO.GOCCIAID = " + set.getInt("GOCCIAID");
                 Statement st = conn.createStatement();
                 ResultSet res = st.executeQuery(query);
-                Prodotto p = new Prodotto();
                 while(res.next()){
-                    p.setId(res.getInt("id"));
-                    p.setNome(res.getString("nome"));
-                    p.setUrlImmagine(res.getString("urlimmagine"));
-                    p.setDescrizione(res.getString("descrizione"));
-                    p.setQuantita(res.getInt("quantita"));
-                    p.setPrezzo(res.getDouble("prezzo"));
+                    Prodotto p = new Prodotto();
+                    p.setId(res.getInt("ID"));
+                    p.setNome(res.getString("NOME"));
+                    p.setUrlImmagine(res.getString("URLIMMAGINE"));
+                    p.setDescrizione(res.getString("DESCRIZIONE"));
+                    p.setPrezzo(res.getDouble("PREZZO"));
                     venditore.addProdottoInVendita(p);
                 }
                 return venditore;
             }
+            
             stmt.close();
             conn.close();
         } catch (SQLException e){
-            
+            e.printStackTrace();
         }
         return null;
     }
@@ -169,28 +187,56 @@ public class GocceFactory {
      * @return the listaProdotti
      */
     public ArrayList<Prodotto> getListaProdotti() {
-        try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")){
-            String query = "select * from prodotto";
-            Statement st = conn.createStatement();
-            ResultSet res = st.executeQuery(query);
-            Prodotto p = new Prodotto();
+        try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
+            Statement stmt = conn.createStatement();
+            ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
+            String query =  "SELECT *\n" +
+                            "FROM PRODOTTO\n" +
+                            "JOIN VENDITORE ON VENDITORE.GOCCIAID = PRODOTTO.GOCCIAID";
+            ResultSet res = stmt.executeQuery(query);
             while(res.next()){
-                p.setId(res.getInt("id"));
-                p.setNome(res.getString("nome"));
-                p.setUrlImmagine(res.getString("urlimmagine"));
-                p.setDescrizione(res.getString("descrizione"));
-                p.setQuantita(res.getInt("quantita"));
-                p.setPrezzo(res.getDouble("prezzo"));
-                p.setGocciaId(res.getInt("gocciaid"));
+                Prodotto p = new Prodotto();
+                p.setId(res.getInt("ID"));
+                p.setNome(res.getString("NOME"));
+                p.setUrlImmagine(res.getString("URLIMMAGINE"));
+                p.setDescrizione(res.getString("DESCRIZIONE"));
+                p.setPrezzo(res.getDouble("PREZZO"));
+                p.setGocciaId(res.getInt("GOCCIAID"));
                 listaProdotti.add(p);
             }
             return listaProdotti;
         } catch (SQLException e){
-            
+            e.printStackTrace();
         }
         return null;
     }
+    public int insertProdotto(Prodotto p, int id) {
+        try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
+            int i;
+
+            for (i=0; i<p.getQuantita(); i++){
+                String query =  "INSERT INTO PRODOTTO " +
+                        "VALUES (default, ?, ?, ?, ?, ?)";
+                PreparedStatement stmt = conn.prepareStatement(query);
+                // dati
+                stmt.setString(1, p.getNome());
+                stmt.setString(2, p.getUrlImmagine());
+                stmt.setString(3, p.getDescrizione());
+                stmt.setDouble(4, p.getPrezzo());
+                stmt.setInt(5, id);
+                
+                return stmt.executeUpdate();
+            }
+            
+            conn.close();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        
+        return 0;
+    }
     public Prodotto getProdottoById(int id) {
+        ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
         listaProdotti = getListaProdotti();
         for(Prodotto u : listaProdotti) {
             if(u.getId() == id)
@@ -199,6 +245,7 @@ public class GocceFactory {
         return null;
     }
     public Prodotto getProdottoByNome(String nome) {
+        ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
         listaProdotti = getListaProdotti();
         for(Prodotto u : listaProdotti) {
             if(nome.equals(u.getNome()))
@@ -212,20 +259,27 @@ public class GocceFactory {
      */
     public ArrayList<Goccia> getListaVenditori() {
         try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")){
-            String query =  "SELECT * " +
-                            "FROM goccia " +
-                            "JOIN venditore ON goccia.id = venditore.gocciaid";
+            ArrayList<Goccia> listaVenditori = new ArrayList<Goccia>();
+            String query =  "SELECT GOCCIA.ID as GOCCIAID,\n" +
+                                "GOCCIA.NOME as NOME,\n" +
+                                "GOCCIA.COGNOME as COGNOME,\n" +
+                                "GOCCIA.USERNAME as USERNAME,\n" +
+                                "GOCCIA.PASSWORD as PASSWORD,\n" +
+                                "VENDITORE.ID as VENDITOREID,\n" +
+                                "GOCCIA.SALDO as SALDO\n" +
+                            "FROM GOCCIA\n" +
+                            "JOIN VENDITORE ON VENDITORE.GOCCIAID = GOCCIA.ID";
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery(query);
-            Venditore venditore = new Venditore();
             while(res.next()){
-                venditore.setId(res.getInt("id"));
-                venditore.setNome(res.getString("nome"));
-                venditore.setCognome(res.getString("cognome"));
-                venditore.setUsername(res.getString("username"));
-                venditore.setPassword(res.getString("password"));
-                venditore.setVenditoreId(res.getInt("venditore.id"));
-                venditore.setSaldo(res.getDouble("saldo"));
+                Venditore venditore = new Venditore();
+                venditore.setId(res.getInt("GOCCIAID"));
+                venditore.setNome(res.getString("NOME"));
+                venditore.setCognome(res.getString("COGNOME"));
+                venditore.setUsername(res.getString("USERNAME"));
+                venditore.setPassword(res.getString("PASSWORD"));
+                venditore.setVenditoreId(res.getInt("VENDITOREID"));
+                venditore.setSaldo(res.getDouble("SALDO"));
                 listaVenditori.add(venditore);
             }
             return listaVenditori;
@@ -234,13 +288,8 @@ public class GocceFactory {
         }
         return null;
     }
-    /**
-     * @param listaVenditori the listaVenditori to set
-     */
-    public void setListaVenditori(ArrayList<Goccia> listaVenditori) {
-        this.listaVenditori = listaVenditori;
-    }
     public Goccia getVenditoreById(int id) {
+        ArrayList<Goccia> listaVenditori = new ArrayList<Goccia>();
         listaVenditori = getListaVenditori();
         for(Goccia u : listaVenditori) {
             if(u.getId() == id)
@@ -249,6 +298,7 @@ public class GocceFactory {
         return null;
     }
     public Goccia getVenditoreByNome(String nome) {
+        ArrayList<Goccia> listaVenditori = new ArrayList<Goccia>();
         listaVenditori = getListaVenditori();
         for(Goccia u : listaVenditori) {
             if(nome.equals(u.getNome()))
@@ -262,20 +312,27 @@ public class GocceFactory {
      */
     public ArrayList<Goccia> getListaClienti() {
         try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")){
-            String query =  "SELECT * " +
-                            "FROM goccia " +
-                            "JOIN cliente ON goccia.id = cliente.gocciaid";
+            ArrayList<Goccia> listaClienti = new ArrayList<Goccia>();
+            String query =  "SELECT GOCCIA.ID as GOCCIAID,\n" +
+                                "GOCCIA.NOME as NOME,\n" +
+                                "GOCCIA.COGNOME as COGNOME,\n" +
+                                "GOCCIA.USERNAME as USERNAME,\n" +
+                                "GOCCIA.PASSWORD as PASSWORD,\n" +
+                                "CLIENTE.ID as CLIENTEID,\n" +
+                                "GOCCIA.SALDO as SALDO\n" +
+                            "FROM GOCCIA\n" +
+                            "JOIN CLIENTE ON CLIENTE.GOCCIAID = GOCCIA.ID";
             Statement st = conn.createStatement();
             ResultSet res = st.executeQuery(query);
-            Cliente cliente = new Cliente();
             while(res.next()){
-                cliente.setId(res.getInt("id"));
-                cliente.setNome(res.getString("nome"));
-                cliente.setCognome(res.getString("cognome"));
-                cliente.setUsername(res.getString("username"));
-                cliente.setPassword(res.getString("password"));
-                cliente.setClienteId(res.getInt("venditore.id"));
-                cliente.setSaldo(res.getDouble("saldo"));
+                Cliente cliente = new Cliente();
+                cliente.setId(res.getInt("ID"));
+                cliente.setNome(res.getString("NOME"));
+                cliente.setCognome(res.getString("COGNOME"));
+                cliente.setUsername(res.getString("USERNAME"));
+                cliente.setPassword(res.getString("PASSWORD"));
+                cliente.setClienteId(res.getInt("CLIENTEID"));
+                cliente.setSaldo(res.getDouble("SALDO"));
                 listaClienti.add(cliente);
             }
             return listaClienti;
@@ -284,13 +341,8 @@ public class GocceFactory {
         }
         return null;
     }
-    /**
-     * @param listaClienti the listaClienti to set
-     */
-    public void setListaClienti(ArrayList<Goccia> listaClienti) {
-        this.listaClienti = listaClienti;
-    }
     public Goccia getClienteById(int id) {
+        ArrayList<Goccia> listaClienti = new ArrayList<Goccia>();
         listaClienti = getListaClienti();
         for(Goccia u : listaClienti) {
             if(u.getId() == id)
@@ -299,6 +351,7 @@ public class GocceFactory {
         return null;
     }
     public Goccia getClienteByNome(String nome) {
+        ArrayList<Goccia> listaClienti = new ArrayList<Goccia>();
         listaClienti = getListaClienti();
         for(Goccia u : listaClienti) {
             if(nome.equals(u.getNome()))
@@ -308,6 +361,8 @@ public class GocceFactory {
     }
     
     public ArrayList<Goccia> getListaGocce() {
+        ArrayList<Goccia> listaVenditori = new ArrayList<Goccia>();
+        ArrayList<Goccia> listaClienti = new ArrayList<Goccia>();
         ArrayList<Goccia> listaGocce = new ArrayList<Goccia>();
         listaVenditori = getListaVenditori();
         listaClienti = getListaClienti();
