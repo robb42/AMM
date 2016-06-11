@@ -12,21 +12,20 @@ Utente generico
     saldo
 
 [Venditore]
-Collegato con una relazione 1-1 con la suerclasse goccia
+Relazione 1-1 con la superclasse goccia
 
 [Cliente]
-Collegato con una relazione 1-1 con la suerclasse goccia
+Relazione 1-1 con la superclasse goccia
 
 
 [Prodotto]
-Prodotto posseduto da un venditore o da un cliente
+Prodotto venduto da un venditore
     nome
     url immagine
     descrizione
     prezzo
 
-
-Relazione   prodotto-goccia
-                1       n
-Ogni utente puù possedere diverso prodotti, ma ogni prodotto può appartenere a
-un solo utente alla volta
+[Gioco]
+Entità disponibile alla vendita di un prodotto, può appartenere a un venditore o a un cliente
+Relazione 1-1 con la classe Prodotto
+Relazione 1-1 col proprietario

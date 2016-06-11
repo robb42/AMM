@@ -8,10 +8,22 @@
  * Created: 24-mag-2016
  */
 
-INSERT INTO goccia VALUES (default, 'Gabe', 'Newell', 'Gaben', '3', 333.33);
-INSERT INTO venditore VALUES (default, 1);
-INSERT INTO prodotto VALUES (default, 'Squadra Fortezza 2', 'Images/001.jpg', 'Boh bello', 11.11, 1);
-INSERT INTO prodotto VALUES (default, 'Mezza-Vita', 'Images/002.jpg', 'Boh bello', 11.11, 1);
+INSERT INTO goccia (id, nome, cognome, username, password, saldo)
+    VALUES (default, 'Gabe', 'Newell', 'Gaben', '3', 333.33);
+INSERT INTO venditore (id, gocciaId)
+    VALUES (default, 1);
 
-INSERT INTO goccia VALUES (default, 'Ayy', 'Lmao', 'ayy', 'lmao', 11.11);
-INSERT INTO cliente VALUES (default, 2);
+INSERT INTO prodotto (id, venditoreId, nome, urlImmagine, descrizione, prezzo)
+    VALUES (default, 1, 'Squadra Fortezza 2', 'Images/001.jpg', 'Boh bello', 11.11);
+INSERT INTO gioco (id, prodottoId, gocciaId)
+    VALUES (default, 1, 1);
+
+INSERT INTO prodotto (id, venditoreId, nome, urlImmagine, descrizione, prezzo)
+    VALUES (default, 1, 'Mezza-Vita', 'Images/002.jpg', 'Boh bello', 11.11);
+INSERT INTO gioco (id, prodottoId, gocciaId)
+    VALUES (default, 2, 1);
+
+INSERT INTO goccia (id, nome, cognome, username, password, saldo)
+    VALUES (default, 'Ayy', 'Lmao', 'ayy', 'lmao', 11.11);
+INSERT INTO cliente (id, gocciaId)
+    VALUES (default, 2);
