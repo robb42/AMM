@@ -28,47 +28,7 @@ public class GocceFactory {
     // Variabile per la connessione al db
     private String connectionString;
     
-    private GocceFactory(){
-        
-        /*Prodotto gioco1 = new Prodotto();
-        gioco1.setId(0);
-        gioco1.setNome("Squadra Fortezza 2");
-        gioco1.setUrlImmagine("Images/001.jpg");
-        gioco1.setDescrizione("Boh bello");
-        gioco1.setQuantita(5);
-        gioco1.setPrezzo(9.99);
-        listaProdotti.add(gioco1);
-        Prodotto gioco2 = new Prodotto();
-        gioco2.setId(1);
-        gioco2.setNome("Mezza-Vita");
-        gioco2.setUrlImmagine("Images/002.jpg");
-        gioco2.setDescrizione("Boh bello");
-        gioco2.setQuantita(5);
-        gioco2.setPrezzo(9.99);
-        listaProdotti.add(gioco2);
-        
-        Venditore venditore1 = new Venditore();
-        venditore1.setNome("Gabe");
-        venditore1.setCognome("Newell");
-        venditore1.setUsername("Gaben");
-        venditore1.setPassword("3");
-        venditore1.setId(0);
-        venditore1.setSaldo(30.0);
-        venditore1.addProdottoInVendita(gioco1);
-        //ArrayList<Prodotto> arrayGiochi1 = new ArrayList<Prodotto>();
-        //arrayGiochi1.add(gioco1);
-        //venditore1.setProdottiInVendita(arrayGiochi1);
-        listaVenditori.add(venditore1);
-        
-        Cliente cliente1 = new Cliente();
-        cliente1.setNome("Lil");
-        cliente1.setCognome("Mayo");
-        cliente1.setUsername("Ayy");
-        cliente1.setPassword("Lmao");
-        cliente1.setId(0);
-        cliente1.setSaldo(30.0);
-        listaClienti.add(cliente1);*/
-    }
+    private GocceFactory(){}
     
     public Goccia getGoccia(String username, String password) {
         try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
@@ -105,9 +65,11 @@ public class GocceFactory {
                             "PRODOTTO.DESCRIZIONE as DESCRIZIONE,\n" +
                             "PRODOTTO.PREZZO as PREZZO\n" +
                         "FROM PRODOTTO\n" +
-                        "WHERE PRODOTTO.GOCCIAID = " + set.getInt("GOCCIAID");
-                Statement st = conn.createStatement();
-                ResultSet res = st.executeQuery(query);
+                        "JOIN GIOCO ON GIOCO.GOCCIAID = ? AND GIOCO.PRODOTTOID = PRODOTTO.ID";
+                stmt = conn.prepareStatement(query);
+                // dati
+                stmt.setInt(1, set.getInt("GOCCIAID"));
+                ResultSet res = stmt.executeQuery();
                 while(res.next()){
                     Prodotto p = new Prodotto();
                     p.setId(res.getInt("id"));

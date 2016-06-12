@@ -27,3 +27,5 @@ INSERT INTO goccia (id, nome, cognome, username, password, saldo)
     VALUES (default, 'Ayy', 'Lmao', 'ayy', 'lmao', 11.11);
 INSERT INTO cliente (id, gocciaId)
     VALUES (default, 2);
+INSERT INTO gioco (id, prodottoId, gocciaId)
+    VALUES (default, 2, 2);
