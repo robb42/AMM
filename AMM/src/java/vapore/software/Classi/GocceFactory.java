@@ -77,6 +77,7 @@ public class GocceFactory {
                     p.setUrlImmagine(res.getString("urlimmagine"));
                     p.setDescrizione(res.getString("descrizione"));
                     p.setPrezzo(res.getDouble("prezzo"));
+                    p.setQuantita(1);
                     cliente.addProdottoPosseduto(p);
                 }
                 return cliente;
@@ -173,16 +174,22 @@ public class GocceFactory {
                 p.setUrlImmagine(res.getString("URLIMMAGINE"));
                 p.setDescrizione(res.getString("DESCRIZIONE"));
                 p.setPrezzo(res.getDouble("PREZZO"));
-                p.setGocciaId(res.getInt("GOCCIAID"));
-                query = "SELECT COUNT(*) AS TOTAL\n" +
-                        "FROM GIOCO\n" +
-                        "WHERE GIOCO.PRODOTTOID = ? AND GIOCO.GOCCIAID = ?";
-                PreparedStatement stmt2 = conn.prepareStatement(query);
+                p.setGocciaId(res.getInt("VENDITOREID"));
+                String query2 = "SELECT COUNT(*) AS TOTAL\n" +
+                                "FROM GIOCO\n" +
+                                "WHERE GIOCO.PRODOTTOID = ? AND GIOCO.GOCCIAID = ?";
+                PreparedStatement stmt2 = conn.prepareStatement(query2);
                 // dati
                 stmt2.setInt(1, res.getInt("ID"));
                 stmt2.setInt(2, res.getInt("VENDITOREID"));
                 ResultSet res2 = stmt2.executeQuery();
-                p.setQuantita(res2.getInt("TOTAL"));
+                if(res2.next()) {
+                    p.setQuantita(res2.getInt("TOTAL"));
+                }
+                else {
+                    p.setQuantita(0);
+                }
+                    
                 listaProdotti.add(p);
             }
             return listaProdotti;
@@ -191,7 +198,7 @@ public class GocceFactory {
         }
         return null;
     }
-    /*public int insertProdotto(Prodotto p, int id) {
+    public int insertProdotto(Prodotto p, int id) {
         try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
             int i;
 
@@ -215,7 +222,7 @@ public class GocceFactory {
         }
         
         return 0;
-    }*/
+    }
     public Prodotto getProdottoById(int id) {
         ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
         listaProdotti = getListaProdotti();
