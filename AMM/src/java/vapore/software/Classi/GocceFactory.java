@@ -115,9 +115,11 @@ public class GocceFactory {
                             "PRODOTTO.DESCRIZIONE as DESCRIZIONE,\n" +
                             "PRODOTTO.PREZZO as PREZZO\n" +
                         "FROM PRODOTTO\n" +
-                        "WHERE PRODOTTO.GOCCIAID = " + set.getInt("GOCCIAID");
-                Statement st = conn.createStatement();
-                ResultSet res = st.executeQuery(query);
+                        "WHERE PRODOTTO.VENDITOREID = ?";
+                stmt = conn.prepareStatement(query);
+                // dati
+                stmt.setInt(1, set.getInt("VENDITOREID"));
+                ResultSet res = stmt.executeQuery();
                 while(res.next()){
                     Prodotto p = new Prodotto();
                     p.setId(res.getInt("ID"));
@@ -125,6 +127,15 @@ public class GocceFactory {
                     p.setUrlImmagine(res.getString("URLIMMAGINE"));
                     p.setDescrizione(res.getString("DESCRIZIONE"));
                     p.setPrezzo(res.getDouble("PREZZO"));
+                    query = "SELECT COUNT(*) AS TOTAL\n" +
+                            "FROM GIOCO\n" +
+                            "WHERE GIOCO.PRODOTTOID = ? AND GIOCO.GOCCIAID = ?";
+                    stmt = conn.prepareStatement(query);
+                    // dati
+                    stmt.setInt(1, res.getInt("ID"));
+                    stmt.setInt(2, set.getInt("GOCCIAID"));
+                    ResultSet res2 = stmt.executeQuery();
+                    p.setQuantita(res2.getInt("TOTAL"));
                     venditore.addProdottoInVendita(p);
                 }
                 return venditore;
@@ -153,8 +164,7 @@ public class GocceFactory {
             Statement stmt = conn.createStatement();
             ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
             String query =  "SELECT *\n" +
-                            "FROM PRODOTTO\n" +
-                            "JOIN VENDITORE ON VENDITORE.GOCCIAID = PRODOTTO.GOCCIAID";
+                            "FROM PRODOTTO\n";
             ResultSet res = stmt.executeQuery(query);
             while(res.next()){
                 Prodotto p = new Prodotto();
@@ -164,6 +174,15 @@ public class GocceFactory {
                 p.setDescrizione(res.getString("DESCRIZIONE"));
                 p.setPrezzo(res.getDouble("PREZZO"));
                 p.setGocciaId(res.getInt("GOCCIAID"));
+                query = "SELECT COUNT(*) AS TOTAL\n" +
+                        "FROM GIOCO\n" +
+                        "WHERE GIOCO.PRODOTTOID = ? AND GIOCO.GOCCIAID = ?";
+                PreparedStatement stmt2 = conn.prepareStatement(query);
+                // dati
+                stmt2.setInt(1, res.getInt("ID"));
+                stmt2.setInt(2, res.getInt("VENDITOREID"));
+                ResultSet res2 = stmt2.executeQuery();
+                p.setQuantita(res2.getInt("TOTAL"));
                 listaProdotti.add(p);
             }
             return listaProdotti;
@@ -172,7 +191,7 @@ public class GocceFactory {
         }
         return null;
     }
-    public int insertProdotto(Prodotto p, int id) {
+    /*public int insertProdotto(Prodotto p, int id) {
         try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
             int i;
 
@@ -196,7 +215,7 @@ public class GocceFactory {
         }
         
         return 0;
-    }
+    }*/
     public Prodotto getProdottoById(int id) {
         ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
         listaProdotti = getListaProdotti();

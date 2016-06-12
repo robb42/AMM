@@ -57,7 +57,7 @@ public class Venditore extends HttpServlet {
             p.setQuantita(quantita);
             p.setPrezzo(prezzo);
             
-            GocceFactory.getInstance().insertProdotto(p, (int)session.getAttribute("id"));
+            //GocceFactory.getInstance().insertProdotto(p, (int)session.getAttribute("id"));
             
             request.setAttribute("prodotto", p);
             request.getRequestDispatcher("venditore_inserito.jsp").forward(request, response);  
