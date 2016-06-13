@@ -46,11 +46,12 @@ public class Cliente extends HttpServlet {
             ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti();
             Prodotto p = GocceFactory.getInstance().getProdottoById(giocoid);
             if(request.getParameter("Submit") != null) {
+                int clienteid = (int) session.getAttribute("id");
+                Double prezzo = p.getPrezzo();
                 Double saldo = (Double) session.getAttribute("saldo");
 
-                if(saldo >= p.getPrezzo()){
-                    saldo -= p.getPrezzo();
-                    session.setAttribute("saldo", saldo);
+                if(GocceFactory.getInstance().transaction(giocoid, clienteid)) {
+                    session.setAttribute("saldo", saldo-prezzo);
                     request.setAttribute("acquisto", true);
                 }
                 else{

@@ -115,4 +115,8 @@ public class Prodotto {
     public void setGocciaId(int gocciaId) {
         this.gocciaId = gocciaId;
     }
+
+    public boolean controllaVenditore(int id) {
+        return this.gocciaId == id;
+    }
 }

@@ -44,9 +44,22 @@ and open the template in the editor.
     font-style: normal;
 }
 /* Classi di FA */
+.fa{
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .shopping-cart:before{
-    font-family: FontAwesome;
     content: "\f07a";
+}
+.edit-icon:before{
+    content: "\f040";
+}
+.trash-icon:before{
+    content: "\f1f8";
 }
 
 /* Struttura generale */

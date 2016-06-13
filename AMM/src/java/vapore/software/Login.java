@@ -75,6 +75,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("classe", "venditore");
                     session.setAttribute("venditoreId", ((Venditore)u).getVenditoreId());
                     request.setAttribute("venditore", u);
+                    request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdottiV(u.getId()));
                     request.getRequestDispatcher("venditore.jsp").forward(request, response);
                 }
                 else {

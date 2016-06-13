@@ -39,10 +39,10 @@ and open the template in the editor.
             <!-- Content -->
             <div id="content">
                 <c:choose>
-                    <c:when test="${error == true}">
+                    <c:when test="${rimosso == true}">
                         <div class="error">
                             <p>
-                                Loggati come cliente per vedere questa pagina
+                                Prodotto rimosso
                             </p>
                         </div>
                     </c:when>
@@ -58,31 +58,32 @@ and open the template in the editor.
                                 <th>
                                     Prezzo
                                 </th>
-                                <th class="table-cart">
+                            </tr>
+
+                            <tr>
+                                <th class="table-logo-box">
+                                    <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
+                                </th>
+                                <th>
+                                    ${prodotto.getNome()}
+                                </th>
+                                <th>
+                                    ${prodotto.getQuantita()}
+                                </th>
+                                <th>
+                                    ${prodotto.getPrezzo()}
                                 </th>
                             </tr>
 
-                            <c:forEach var="prodotto" items="${listaProdotti}">
-                                <tr>
-                                    <th class="table-logo-box">
-                                        <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
-                                    </th>
-                                    <th>
-                                        ${prodotto.getNome()}
-                                    </th>
-                                    <th>
-                                        ${prodotto.getQuantita()}
-                                    </th>
-                                    <th>
-                                        ${prodotto.getPrezzo()}
-                                    </th>
-                                    <th>
-                                        <a href="Cliente?GiocoID=${prodotto.getId()}"><i class="fa shopping-cart"></i></a>
-                                    </th>
-                                </tr>
-                            </c:forEach>
-
                         </table>
+                        <p>${prodotto.getDescrizione()}</p>
+                        <form method="post" action="Venditore?RimuoviGiocoID=${prodotto.getId()}" class="form">
+                            <ul>
+                                <li>
+                                    <input type="submit" name="Rimuovi" value="Rimuovi" class="form-submit form-right">
+                                </li>
+                            </ul>
+                        </form>
                     </c:otherwise>
                 </c:choose>
             </div>

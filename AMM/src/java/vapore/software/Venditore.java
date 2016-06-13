@@ -56,38 +56,73 @@ public class Venditore extends HttpServlet {
             p.setDescrizione(descrizione);
             p.setQuantita(quantita);
             p.setPrezzo(prezzo);
+            p.setGocciaId((int) session.getAttribute("id"));
             
-            //GocceFactory.getInstance().insertProdotto(p, (int)session.getAttribute("id"));
+            GocceFactory.getInstance().insertProdotto(p);
             
             request.setAttribute("prodotto", p);
-            request.getRequestDispatcher("venditore_inserito.jsp").forward(request, response);  
+            request.getRequestDispatcher("venditore_inserito.jsp").forward(request, response);
         }
-        
-        if(request.getParameter("Gestione") != null) {
-            //Elenco solo i prodotti posseduti da questo venditore
+        else if(request.getParameter("GiocoID") != null) {
+            int giocoid = Integer.parseInt(request.getParameter("GiocoID"));
             
-            //request.setAttribute("prodotto", p);
-            //request.getRequestDispatcher("venditore_inserito.jsp").forward(request, response);  
-        }
-        
-        if(request.getParameter("GiocoID") != null) {
-            //Controllo che il prodotto sia realmente posseduto dal venditore
-            //Invio i dati aggiornati al server
+            ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti();
+            Prodotto p = GocceFactory.getInstance().getProdottoById(giocoid);
+            
+//            if(!p.controllaVenditore((int) session.getAttribute("id"))) {
+//                request.setAttribute("error", true);
+//                request.getRequestDispatcher("venditore.jsp").forward(request, response); 
+//            }
+            
+            if(request.getParameter("Modifica") != null) {
+                String nomeprodotto = request.getParameter("NomeProdotto");
+                String urlimmagine = request.getParameter("URLImmagine");
+                String descrizione = request.getParameter("Descrizione");
+                int quantita = Integer.parseInt(request.getParameter("Quantita"));
+                Double prezzo = Double.parseDouble(request.getParameter("Prezzo"));
+                
+                p.setId(giocoid);
+                p.setNome(nomeprodotto);
+                p.setUrlImmagine(urlimmagine);
+                p.setDescrizione(descrizione);
+                p.setQuantita(quantita);
+                p.setPrezzo(prezzo);
+                p.setGocciaId((int) session.getAttribute("id"));
 
-            //request.setAttribute("prodotto", p);
-            //request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
-        }
-        
-        if(request.getParameter("RimuoviGiocoID") != null) {
-            //Controllo che il prodotto sia realmente posseduto dal venditore
-            //Rimuovo il prodotto dal server
+                GocceFactory.getInstance().updateProdotto(p);
 
-            //request.setAttribute("prodotto", p);
-            //request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
+                request.setAttribute("prodotto", p);
+                request.getRequestDispatcher("venditore_inserito.jsp").forward(request, response);
+            }
+            else {
+                request.setAttribute("prodotto", p);
+                request.getRequestDispatcher("venditore_modifica.jsp").forward(request, response);
+            }
         }
-        
+        else if(request.getParameter("RimuoviGiocoID") != null) {
+            int giocoid = Integer.parseInt(request.getParameter("RimuoviGiocoID"));
+            
+            ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti();
+            Prodotto p = GocceFactory.getInstance().getProdottoById(giocoid);
+            
+//            if(!p.controllaVenditore((int) session.getAttribute("id"))) {
+//                request.setAttribute("error", true);
+//                request.getRequestDispatcher("venditore.jsp").forward(request, response); 
+//            }
+            
+            if(request.getParameter("Rimuovi") != null) {
+                GocceFactory.getInstance().removeProdotto(p);
+
+                request.setAttribute("rimosso", true);
+                request.getRequestDispatcher("venditore_rimuovi.jsp").forward(request, response);
+            }
+
+            request.setAttribute("prodotto", p);
+            request.getRequestDispatcher("venditore_rimuovi.jsp").forward(request, response);
+        }
         if(session.getAttribute("loggedIn") != null){
             if(session.getAttribute("classe").equals("venditore")) {
+                request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdottiV((int) session.getAttribute("id")));
                 request.getRequestDispatcher("venditore.jsp").forward(request, response);
             }
         }

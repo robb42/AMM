@@ -48,6 +48,49 @@ and open the template in the editor.
                         </div>
                     </c:when>
                     <c:otherwise>
+                        <h2 class="description-title">Prodotti in vendita</h2>
+                        <table class="table">
+                            <tr class="table-head">
+                                <th colspan="2">
+                                    Nome
+                                </th>
+                                <th>
+                                    Disponibili
+                                </th>
+                                <th>
+                                    Prezzo
+                                </th>
+                                <th class="table-cart">
+                                </th>
+                                <th class="table-cart">
+                                </th>
+                            </tr>
+
+                            <c:forEach var="prodotto" items="${listaProdotti}">
+                                <tr>
+                                    <th class="table-logo-box">
+                                        <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
+                                    </th>
+                                    <th>
+                                        ${prodotto.getNome()}
+                                    </th>
+                                    <th>
+                                        ${prodotto.getQuantita()}
+                                    </th>
+                                    <th>
+                                        ${prodotto.getPrezzo()}
+                                    </th>
+                                    <th>
+                                        <a href="Venditore?GiocoID=${prodotto.getId()}"><i class="fa edit-icon"></i></a>
+                                    </th>
+                                    <th>
+                                        <a href="Venditore?RimuoviGiocoID=${prodotto.getId()}"><i class="fa trash-icon"></i></a>
+                                    </th>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                        
+                        <h2 class="description-title">Inserisci nuovo prodotto</h2>
                         <form method="post" action="Venditore" class="form">
                             <ul>
                                 <li>
@@ -61,9 +104,6 @@ and open the template in the editor.
                                     <input type="number" name="Quantita" id="quantita" placeholder="Quantità" class="form-element form-left">
                                     <input type="number" step="0.01" name="Prezzo" id="prezzo" placeholder="Prezzo" class="form-element">
                                     <input type="submit" name="Submit" class="form-submit form-right">
-                                </li>
-                                <li>
-                                    <input type="submit" name="Gestione" value="Gestione Oggetti" class="form-submit form-right">
                                 </li>
                             </ul>
                         </form>
