@@ -13,17 +13,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import vapore.software.Classi.GocceFactory;
-import vapore.software.Classi.Goccia;
 import vapore.software.Classi.Prodotto;
 
 /**
  *
  * @author rober
  */
-@WebServlet(name = "Cliente", urlPatterns = {"/Cliente"})
-public class Cliente extends HttpServlet {
+@WebServlet(name = "Filter", urlPatterns = {"/Filter"})
+public class Filter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,41 +34,26 @@ public class Cliente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+                // Controlla se è stato inviato un commando
         
-        HttpSession session = request.getSession(true);
-        
-        if(request.getParameter("GiocoID") != null) {
-            int giocoid = Integer.parseInt(request.getParameter("GiocoID"));
-            
-            ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti();
-            Prodotto p = GocceFactory.getInstance().getProdottoById(giocoid);
-            if(request.getParameter("Submit") != null) {
-                int clienteid = (int) session.getAttribute("id");
-
-                if(GocceFactory.getInstance().transaction(giocoid, clienteid)) {
-                    Goccia c = GocceFactory.getInstance().getClienteById(clienteid);
-                    
-                    session.setAttribute("saldo", c.getSaldo());
-                    request.setAttribute("acquisto", true);
-                }
-                else{
-                    request.setAttribute("error", true);
-                }
-            }
-
-            request.setAttribute("prodotto", p);
-            request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
-        }
-        
-        if(session.getAttribute("loggedIn") != null){
-            if(session.getAttribute("classe").equals("cliente")) {
-                request.setAttribute("listaProdotti", GocceFactory.getInstance().getListaProdotti());
-                request.getRequestDispatcher("cliente.jsp").forward(request, response);
+        String command = request.getParameter("cmd");
+        if (command != null) {
+            // Verifica che commando e id siano stati impostati
+            if (command.equals("search")) {
+                
+                // Esegue la ricerca
+                ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti(request.getParameter("text"));
+                // Imposto la lista come attributo della request, come facevamo per l'HTML
+                request.setAttribute("listaProdotti", listaProdotti);
+                
+                // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
+                response.setContentType("application/json");
+                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
+                // Genero il json con una jsp
+                request.getRequestDispatcher("listaProdotti2Json.jsp").forward(request, response);
             }
         }
-        request.setAttribute("error", true);
-        request.getRequestDispatcher("cliente.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

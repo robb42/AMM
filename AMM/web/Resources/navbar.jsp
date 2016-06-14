@@ -6,8 +6,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<nav class="navbar">
-    <div>
+<nav>
+    <div class="navbar">
         <ul>
             <li id="descrizione" class="title"><a href="descrizione.jsp">Descrizione</a></li>
             <li id="cliente" class="title"><a href="Cliente">Cliente</a></li>
@@ -15,6 +15,10 @@
             <c:choose>
                 <c:when test="${loggedIn == true}">
                     <li id="login" class="title"><a href="Login">Logout</a></li>
+                    <div class="info">
+                        <li id="username">${nome}</li>
+                        <li id="saldo">${saldo}</li>
+                    </div>
                 </c:when>
                 <c:otherwise>
                     <li id="login" class="title"><a href="Login">Login</a></li>

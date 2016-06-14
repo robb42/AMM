@@ -195,6 +195,50 @@ public class GocceFactory {
         }
         return null;
     }
+    public ArrayList<Prodotto> getListaProdotti(String nome) {
+        try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
+            ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
+            String query =  "SELECT *\n" +
+                            "FROM PRODOTTO\n" +
+                            "WHERE NOME LIKE ? OR DESCRIZIONE LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // dati
+            stmt.setString(1, nome);
+            stmt.setString(2, nome);
+            ResultSet res = stmt.executeQuery();
+            while(res.next()){
+                Prodotto p = new Prodotto();
+                p.setId(res.getInt("ID"));
+                p.setNome(res.getString("NOME"));
+                p.setUrlImmagine(res.getString("URLIMMAGINE"));
+                p.setDescrizione(res.getString("DESCRIZIONE"));
+                p.setPrezzo(res.getDouble("PREZZO"));
+                p.setGocciaId(res.getInt("VENDITOREID"));
+                String query2 = "SELECT COUNT(*) AS TOTAL\n" +
+                                "FROM GIOCO\n" +
+                                "WHERE GIOCO.PRODOTTOID = ? AND GIOCO.GOCCIAID = ?";
+                PreparedStatement stmt2 = conn.prepareStatement(query2);
+                // dati
+                stmt2.setInt(1, res.getInt("ID"));
+                stmt2.setInt(2, res.getInt("VENDITOREID"));
+                ResultSet res2 = stmt2.executeQuery();
+                if(res2.next()) {
+                    p.setQuantita(res2.getInt("TOTAL"));
+                }
+                else {
+                    p.setQuantita(0);
+                }
+                    
+                listaProdotti.add(p);
+            }
+            
+            conn.close();
+            return listaProdotti;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public ArrayList<Prodotto> getListaProdottiV(int i) {
         try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
             ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
@@ -252,7 +296,8 @@ public class GocceFactory {
                                     "SET SALDO = ? " +
                                     "WHERE ID = ?";
                     PreparedStatement stmt = conn.prepareStatement(query);
-                    stmt.setDouble(1, c.getSaldo()-p.getPrezzo());
+                    Double saldo = (double) Math.round((c.getSaldo()-p.getPrezzo())*100)/100;
+                    stmt.setDouble(1, saldo);
                     stmt.setInt(2, clienteid);
                     stmt.executeUpdate();
                     
@@ -260,7 +305,8 @@ public class GocceFactory {
                             "SET SALDO = ? " +
                             "WHERE ID = ?";
                     stmt = conn.prepareStatement(query);
-                    stmt.setDouble(1, v.getSaldo()+p.getPrezzo());
+                    saldo = (double) Math.round((v.getSaldo()+p.getPrezzo())*100)/100;
+                    stmt.setDouble(1, saldo);
                     stmt.setInt(2, p.getGocciaId());
                     stmt.executeUpdate();
                     

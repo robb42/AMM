@@ -19,7 +19,9 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Roberto Cocco">
         <meta name="keywords" content="Vapore, Giochi, Software">
-        <link href="style.css" rel="stylesheet" type="text/css" media="screen" >
+        <link href="style.css" rel="stylesheet" type="text/css" media="screen">
+        <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="js/filter.js"></script>
     </head>
     <body>
         <!-- NavBar -->
@@ -47,6 +49,14 @@ and open the template in the editor.
                         </div>
                     </c:when>
                     <c:otherwise>
+                        <h2 class="description-title">Prodotti disponibili</h2>
+                        <div class="form">
+                            <ul>
+                                <li>
+                                    <input type="text" id="ricerca" placeholder="Cerca" class="form-element2 form-right"/>
+                                </li>
+                            </ul>
+                        </div>
                         <table class="table">
                             <tr class="table-head">
                                 <th colspan="2">
@@ -61,27 +71,27 @@ and open the template in the editor.
                                 <th class="table-cart">
                                 </th>
                             </tr>
-
+                        </table>
+                        <table class="table" id="listaProdotti">
                             <c:forEach var="prodotto" items="${listaProdotti}">
                                 <tr>
-                                    <th class="table-logo-box">
+                                    <td class="table-logo-box">
                                         <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                         ${prodotto.getNome()}
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                         ${prodotto.getQuantita()}
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                         ${prodotto.getPrezzo()}
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                         <a href="Cliente?GiocoID=${prodotto.getId()}"><i class="fa shopping-cart"></i></a>
-                                    </th>
+                                    </td>
                                 </tr>
                             </c:forEach>
-
                         </table>
                     </c:otherwise>
                 </c:choose>

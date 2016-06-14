@@ -145,8 +145,15 @@ a:hover{
     padding-left:0;
 }
 .navbar ul li{
-    position: relative;
     vertical-align: middle;
+    font-family: robotoLight;
+    text-transform: uppercase;
+    display: inline-block;
+    overflow: hidden;
+}
+.info{
+    position: absolute;
+    float: right;
     font-family: robotoLight;
     text-transform: uppercase;
     display: inline-block;
