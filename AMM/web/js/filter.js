@@ -26,11 +26,30 @@ $(document).ready(function() {
         function aggiornaListaProdotti(listaProdotti) {
             // Cancella la tabella
             $("#listaProdotti").empty();
+            
+            $("#listaProdotti")
+                .append($('<tr>')
+                    .attr('class', 'table-head')
+                    .append($('<th>')
+                        .attr('colspan', '2')
+                        .text('Nome')
+                    )
+                    .append($('<th>')
+                        .text('Disponibili')
+                    )
+                    .append($('<th>')
+                        .text('Prezzo')
+                    )
+                    .append($('<th>')
+                        .attr('class', 'table-cart')
+                    )
+                );
+        
             for(var prodotto in listaProdotti) {
                 $("#listaProdotti")
                     .append($('<tr>')
                         .append($('<td>')
-                        .attr('class', 'table-logo-box')
+                            .attr('class', 'table-logo-box')
                             .append($('<div>')
                                 .attr('class', 'table-logo-bg')
                                 .attr('style', 'background-image:url(\''+listaProdotti[prodotto].urlImmagine+'\')')
@@ -46,7 +65,6 @@ $(document).ready(function() {
                             .text(listaProdotti[prodotto].prezzo)
                         )
                         .append($('<td>')
-                        .attr('class', 'table-cart')
                             .append($('<a>')
                                 .attr('href', 'Cliente?GiocoID='+listaProdotti[prodotto].id)
                                 .append($('<i>')

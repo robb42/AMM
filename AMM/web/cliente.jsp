@@ -57,7 +57,7 @@ and open the template in the editor.
                                 </li>
                             </ul>
                         </div>
-                        <table class="table">
+                        <table class="table" id="listaProdotti">
                             <tr class="table-head">
                                 <th colspan="2">
                                     Nome
@@ -71,8 +71,6 @@ and open the template in the editor.
                                 <th class="table-cart">
                                 </th>
                             </tr>
-                        </table>
-                        <table class="table" id="listaProdotti">
                             <c:forEach var="prodotto" items="${listaProdotti}">
                                 <tr>
                                     <td class="table-logo-box">
