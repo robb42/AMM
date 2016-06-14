@@ -27,49 +27,34 @@ $(document).ready(function() {
             // Cancella la tabella
             $("#listaProdotti").empty();
             for(var prodotto in listaProdotti) {
-                $("#listaProdotti")//.find('tbody')
+                $("#listaProdotti")
                     .append($('<tr>')
                         .append($('<td>')
                         .attr('class', 'table-logo-box')
                             .append($('<div>')
                                 .attr('class', 'table-logo-bg')
-                                .attr('style', 'background-image:url(\''+prodotto.urlImmagine+'\')')
+                                .attr('style', 'background-image:url(\''+listaProdotti[prodotto].urlImmagine+'\')')
                             )
                         )
                         .append($('<td>')
-                            .text(prodotto.nome)
+                            .text(listaProdotti[prodotto].nome)
                         )
                         .append($('<td>')
-                            .text(prodotto.quantita)
+                            .text(listaProdotti[prodotto].quantita)
                         )
                         .append($('<td>')
-                            .text(prodotto.prezzo)
+                            .text(listaProdotti[prodotto].prezzo)
                         )
                         .append($('<td>')
+                        .attr('class', 'table-cart')
                             .append($('<a>')
-                                .attr('href', 'Cliente?GiocoID='+prodotto.id)
+                                .attr('href', 'Cliente?GiocoID='+listaProdotti[prodotto].id)
                                 .append($('<i>')
                                     .attr('class', 'fa shopping-cart')
                                 )
                             )
                         )
                     );
-                // Crea un nuovo tag li
-                /*var newtr = document.createElement("tr");
-                newtr.setAttribute("name", "alunno");
-                // testo
-                var text = document.createTextNode(listaAlunni[alunno].nome + 
-                        " " + listaAlunni[alunno].cognome + " ");
-                newli.appendChild(text);
-                // Crea link
-                var link = document.createElement("a");
-                link.setAttribute("href", "Registra?alunnoId="+listaAlunni[alunno].id);
-                var registraTxt = document.createTextNode("Registra esame");
-                link.appendChild(registraTxt);
-                newli.appendChild(link);
-                
-                // Aggiunge il tag li al tag ul
-                $("#listaProdotti").append(newli);*/
             }
         }
     }); 

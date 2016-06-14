@@ -42,7 +42,7 @@ public class Filter extends HttpServlet {
             if (command.equals("search")) {
                 
                 // Esegue la ricerca
-                ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti();
+                ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti(request.getParameter("text"));
                 // Imposto la lista come attributo della request, come facevamo per l'HTML
                 request.setAttribute("listaProdotti", listaProdotti);
                 
@@ -51,7 +51,7 @@ public class Filter extends HttpServlet {
                 response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
                 response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
                 // Genero il json con una jsp
-                request.getRequestDispatcher("listaProdotti2Json.jsp").forward(request, response);
+                request.getRequestDispatcher("listaProdottiJson.jsp").forward(request, response);
             }
         }
     }

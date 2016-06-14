@@ -198,11 +198,12 @@ public class GocceFactory {
     public ArrayList<Prodotto> getListaProdotti(String nome) {
         try(Connection conn = DriverManager.getConnection(connectionString, "username", "pass")) {
             ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
-            String query =  "SELECT *\n" +
-                            "FROM PRODOTTO\n" +
+            String query =  "SELECT * " +
+                            "FROM PRODOTTO " +
                             "WHERE NOME LIKE ? OR DESCRIZIONE LIKE ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             // dati
+            nome = "%"+nome+"%";
             stmt.setString(1, nome);
             stmt.setString(2, nome);
             ResultSet res = stmt.executeQuery();
