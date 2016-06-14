@@ -42,7 +42,7 @@ public class Filter extends HttpServlet {
             if (command.equals("search")) {
                 
                 // Esegue la ricerca
-                ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti(request.getParameter("text"));
+                ArrayList<Prodotto> listaProdotti = GocceFactory.getInstance().getListaProdotti();
                 // Imposto la lista come attributo della request, come facevamo per l'HTML
                 request.setAttribute("listaProdotti", listaProdotti);
                 
