@@ -37,35 +37,20 @@ and open the template in the editor.
             
             <!-- Content -->
             <div id="content">
-                <table class="table">
-                    <tr class="table-head">
-                        <th colspan="2">
-                            Nome
-                        </th>
-                        <th>
-                            Disponibili
-                        </th>
-                        <th>
-                            Prezzo
-                        </th>
-                    </tr>
-                    
-                    <tr>
-                        <th class="table-logo-box">
-                            <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
-                        </th>
-                        <th>
-                            ${prodotto.getNome()}
-                        </th>
-                        <th>
-                            ${prodotto.getQuantita()}
-                        </th>
-                        <th>
-                            ${prodotto.getPrezzo()}
-                        </th>
-                    </tr>
-                    
-                </table>
+                <ul class="summary">
+                    <li class="summary-bgbox">
+                        <img src="${prodotto.getUrlImmagine()}" class="summary-bg"/>
+                    </li>
+                    <li class="summary-title">
+                        <h2 class="titlebox">${prodotto.getNome()}</h2>
+                    </li>
+                    <li>
+                        <div class="summary-description">${prodotto.getDescrizione()}</div>
+                    </li>
+                    <li class="summary-form">
+                        <div class="form-generic form-left">Disponibili: ${prodotto.getQuantita()}</div>
+                    </li>
+                </ul>
                 
             </div>
             

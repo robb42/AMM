@@ -59,13 +59,20 @@ public class Login extends HttpServlet {
         
         HttpSession session = request.getSession(true);
         
-        if(request.getParameter("Submit") != null) {
+        // Se l'utente è già loggato, procedo a sloggarlo
+        if(session.getAttribute("loggedIn") != null) {
+            session.invalidate();
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+        // Se l'utente tenta di loggarsi chiamo l'apposita procedura
+        else if(request.getParameter("Submit") != null) {
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
             
             Goccia u = GocceFactory.getInstance().getGoccia(username, password);
             
-            if(u != null){
+            //Controllo se sia stato trovato un utente e procedo a salvare i dati in sessione
+            if(u != null) {
                 session.setAttribute("loggedIn", true);
                 session.setAttribute("id", u.getId());
                 session.setAttribute("nome", u.getNome());
@@ -87,15 +94,15 @@ public class Login extends HttpServlet {
                     request.getRequestDispatcher("cliente.jsp").forward(request, response);  
                 }
             }
-            request.setAttribute("userFound", "no");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            // Se non ho avuto un riscontro, richiamo la pagina di login con un errore
+            else {
+                request.setAttribute("userFound", "no");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
         }
+        // Chiamo la pagina di login
         else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        
-        if(session.getAttribute("loggedIn") != null){
-            session.invalidate();
         }
     }
 

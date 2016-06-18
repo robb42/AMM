@@ -45,43 +45,23 @@ and open the template in the editor.
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <table class="table">
-                            <tr class="table-head">
-                                <th colspan="2">
-                                    Nome
-                                </th>
-                                <th>
-                                    Disponibili
-                                </th>
-                                <th>
-                                    Prezzo
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th class="table-logo-box">
-                                    <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
-                                </th>
-                                <th>
-                                    ${prodotto.getNome()}
-                                </th>
-                                <th>
-                                    ${prodotto.getQuantita()}
-                                </th>
-                                <th>
-                                    ${prodotto.getPrezzo()}
-                                </th>
-                            </tr>
-
-                        </table>
-                        <p>${prodotto.getDescrizione()}</p>
-                        <form method="post" action="Venditore?RimuoviGiocoID=${prodotto.getId()}" class="form">
-                            <ul>
-                                <li>
-                                    <input type="submit" name="Rimuovi" value="Rimuovi" class="form-submit form-right">
-                                </li>
-                            </ul>
-                        </form>
+                        <ul class="summary">
+                            <li class="summary-bgbox">
+                                <img src="${prodotto.getUrlImmagine()}" class="summary-bg"/>
+                            </li>
+                            <li class="summary-title">
+                                <h2 class="titlebox">${prodotto.getNome()}</h2>
+                            </li>
+                            <li>
+                                <div class="summary-description">${prodotto.getDescrizione()}</div>
+                            </li>
+                            <li class="summary-form">
+                                <form method="post" action="Venditore?RimuoviGiocoID=${prodotto.getId()}" class="form">
+                                    <div class="form-generic form-left">Prezzo: ${prodotto.getPrezzo()}€</div>
+                                    <input type="submit" name="Rimuovi" value="Rimuovi: ${prodotto.getQuantita()}" class="remove-submit form-right">
+                                </form>
+                            </li>
+                        </ul>
                     </c:otherwise>
                 </c:choose>
             </div>

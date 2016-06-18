@@ -65,11 +65,11 @@ and open the template in the editor.
                                 <div class="summary-description">${prodotto.getDescrizione()}</div>
                             </li>
                             <li class="summary-form">
-                            <form method="post" action="Cliente?GiocoID=${prodotto.getId()}" class="form">
-                                <div class="form-generic form-left">Disponibili: ${prodotto.getQuantita()}</div>
-                                <input type="submit" name="Submit" value="Procedi - ${prodotto.getPrezzo()}€" class="summary-submit form-right">
-                            </form>
-                          </li>
+                                <form method="post" action="Cliente?GiocoID=${prodotto.getId()}" class="form">
+                                    <div class="form-generic form-left">Disponibili: ${prodotto.getQuantita()}</div>
+                                    <input type="submit" name="Submit" value="Procedi - ${prodotto.getPrezzo()}€" class="summary-submit form-right">
+                                </form>
+                            </li>
                         </ul>
                     </c:otherwise>
                 </c:choose>
