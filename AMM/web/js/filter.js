@@ -56,6 +56,7 @@ $(document).ready(function() {
                             )
                         )
                         .append($('<td>')
+                            .attr('class', 'table-name')
                             .text(listaProdotti[prodotto].nome)
                         )
                         .append($('<td>')

@@ -32,9 +32,7 @@ and open the template in the editor.
             <div id="sidebar1"></div>
             
             <!--  sidebar 2 -->
-            <div id="sidebar2">
-                <jsp:include page="Resources/sidebar2.jsp"/>
-            </div>
+            <div id="sidebar2"></div>
             
             <!-- Content -->
             <div id="content">
@@ -54,53 +52,33 @@ and open the template in the editor.
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <table class="table">
-                            <tr class="table-head">
-                                <th colspan="2">
-                                    Nome
-                                </th>
-                                <th>
-                                    Disponibili
-                                </th>
-                                <th>
-                                    Prezzo
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <th class="table-logo-box">
-                                    <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
-                                </th>
-                                <th>
-                                    ${prodotto.getNome()}
-                                </th>
-                                <th>
-                                    ${prodotto.getQuantita()}
-                                </th>
-                                <th>
-                                    ${prodotto.getPrezzo()}
-                                </th>
-                            </tr>
-
-                        </table>
-                        <p>${prodotto.getDescrizione()}</p>
-                        <form method="post" action="Cliente?GiocoID=${prodotto.getId()}" class="form">
-                            <ul>
-                                <li>
-                                    <input type="submit" name="Submit" value="Procedi" class="form-submit form-right">
-                                </li>
-                            </ul>
-                        </form>
+                        <ul class="summary">
+                            <li class="summary-bgbox">
+                                <img src="${prodotto.getUrlImmagine()}" class="summary-bg"/>
+                            </li>
+                            <li class="summary-title">
+                                <h2 class="titlebox">${prodotto.getNome()}</h2>
+                            </li>
+                            <li>
+                                <div class="summary-description">${prodotto.getDescrizione()}</div>
+                            </li>
+                            <li class="summary-form">
+                            <form method="post" action="Cliente?GiocoID=${prodotto.getId()}" class="form">
+                                <div class="form-generic form-left">Disponibili: ${prodotto.getQuantita()}</div>
+                                <input type="submit" name="Submit" value="Procedi - ${prodotto.getPrezzo()}€" class="summary-submit form-right">
+                            </form>
+                          </li>
+                        </ul>
                     </c:otherwise>
                 </c:choose>
             </div>
             
-            <div style="clear: both; width: 0px; height: 0px;"></div>
-            <!--  footer -->
-            <div id="footer">
-                <jsp:include page="Resources/footer.jsp"/>
-            </div>
+        </div>
             
+        <div style="clear: both; width: 0px; height: 0px;"></div>
+        <!--  footer -->
+        <div id="footer">
+            <jsp:include page="Resources/footer.jsp"/>
         </div>
         
     </body>

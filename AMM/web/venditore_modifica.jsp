@@ -69,13 +69,13 @@ and open the template in the editor.
                 </c:choose>
             </div>
             
+        </div>
+            
             <div style="clear: both; width: 0px; height: 0px;"></div>
             <!--  footer -->
             <div id="footer">
                 <jsp:include page="Resources/footer.jsp"/>
             </div>
-            
-        </div>
         
     </body>
 </html>

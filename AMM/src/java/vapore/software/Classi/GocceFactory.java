@@ -57,27 +57,6 @@ public class GocceFactory {
                 cliente.setClienteId(set.getInt("CLIENTEID"));
                 cliente.setSaldo(set.getDouble("SALDO"));
                 
-//                query = "SELECT PRODOTTO.ID as ID,\n" +
-//                            "PRODOTTO.NOME as NOME,\n" +
-//                            "PRODOTTO.URLIMMAGINE as URLIMMAGINE,\n" +
-//                            "PRODOTTO.DESCRIZIONE as DESCRIZIONE,\n" +
-//                            "PRODOTTO.PREZZO as PREZZO\n" +
-//                        "FROM PRODOTTO\n" +
-//                        "JOIN GIOCO ON GIOCO.GOCCIAID = ? AND GIOCO.PRODOTTOID = PRODOTTO.ID";
-//                stmt = conn.prepareStatement(query);
-//                // dati
-//                stmt.setInt(1, set.getInt("GOCCIAID"));
-//                ResultSet res = stmt.executeQuery();
-//                while(res.next()){
-//                    Prodotto p = new Prodotto();
-//                    p.setId(res.getInt("id"));
-//                    p.setNome(res.getString("nome"));
-//                    p.setUrlImmagine(res.getString("urlimmagine"));
-//                    p.setDescrizione(res.getString("descrizione"));
-//                    p.setPrezzo(res.getDouble("prezzo"));
-//                    p.setQuantita(1);
-//                    cliente.addProdottoPosseduto(p);
-//                }
                 return cliente;
             }
             
@@ -108,35 +87,6 @@ public class GocceFactory {
                 venditore.setVenditoreId(set.getInt("VENDITOREID"));
                 venditore.setSaldo(set.getDouble("SALDO"));
                 
-//                query = "SELECT PRODOTTO.ID as ID,\n" +
-//                            "PRODOTTO.NOME as NOME,\n" +
-//                            "PRODOTTO.URLIMMAGINE as URLIMMAGINE,\n" +
-//                            "PRODOTTO.DESCRIZIONE as DESCRIZIONE,\n" +
-//                            "PRODOTTO.PREZZO as PREZZO\n" +
-//                        "FROM PRODOTTO\n" +
-//                        "WHERE PRODOTTO.VENDITOREID = ?";
-//                stmt = conn.prepareStatement(query);
-//                // dati
-//                stmt.setInt(1, set.getInt("VENDITOREID"));
-//                ResultSet res = stmt.executeQuery();
-//                while(res.next()){
-//                    Prodotto p = new Prodotto();
-//                    p.setId(res.getInt("ID"));
-//                    p.setNome(res.getString("NOME"));
-//                    p.setUrlImmagine(res.getString("URLIMMAGINE"));
-//                    p.setDescrizione(res.getString("DESCRIZIONE"));
-//                    p.setPrezzo(res.getDouble("PREZZO"));
-//                    query = "SELECT COUNT(*) AS TOTAL\n" +
-//                            "FROM GIOCO\n" +
-//                            "WHERE GIOCO.PRODOTTOID = ? AND GIOCO.GOCCIAID = ?";
-//                    stmt = conn.prepareStatement(query);
-//                    // dati
-//                    stmt.setInt(1, res.getInt("ID"));
-//                    stmt.setInt(2, set.getInt("GOCCIAID"));
-//                    ResultSet res2 = stmt.executeQuery();
-//                    p.setQuantita(res2.getInt("TOTAL"));
-//                    venditore.addProdottoInVendita(p);
-//                }
                 return venditore;
             }
             

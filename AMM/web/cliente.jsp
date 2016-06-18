@@ -49,13 +49,9 @@ and open the template in the editor.
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <h2 class="description-title">Prodotti disponibili</h2>
+                        <h2 class="titlebox">Prodotti disponibili</h2>
                         <div class="form">
-                            <ul>
-                                <li>
-                                    <input type="text" id="ricerca" placeholder="Cerca" class="form-element2 form-right"/>
-                                </li>
-                            </ul>
+                            <input type="text" id="ricerca" placeholder="Cerca" class="form-element2 form-right"/>
                         </div>
                         <table class="table" id="listaProdotti">
                             <tr class="table-head">
@@ -76,7 +72,7 @@ and open the template in the editor.
                                     <td class="table-logo-box">
                                         <div class="table-logo-bg" style="background-image:url('${prodotto.getUrlImmagine()}')"></div>
                                     </td>
-                                    <td>
+                                    <td class="table-name">
                                         ${prodotto.getNome()}
                                     </td>
                                     <td>
@@ -95,13 +91,13 @@ and open the template in the editor.
                 </c:choose>
             </div>
             
+        </div>
+            
             <div style="clear: both; width: 0px; height: 0px;"></div>
             <!--  footer -->
             <div id="footer">
                 <jsp:include page="Resources/footer.jsp"/>
             </div>
-            
-        </div>
         
     </body>
 </html>

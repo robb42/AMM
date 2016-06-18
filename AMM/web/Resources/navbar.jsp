@@ -14,14 +14,14 @@
             <li id="venditore" class="title"><a href="Venditore">Venditore</a></li>
             <c:choose>
                 <c:when test="${loggedIn == true}">
-                    <li id="login" class="title"><a href="Login">Logout</a></li>
+                    <li id="login" class="title login"><a href="Login">Logout</a></li>
                     <div class="info">
                         <li id="username">${nome}</li>
                         <li id="saldo">${saldo}</li>
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <li id="login" class="title"><a href="Login">Login</a></li>
+                    <li id="login" class="title login"><a href="Login">Login</a></li>
                 </c:otherwise>
             </c:choose>
         </ul>
