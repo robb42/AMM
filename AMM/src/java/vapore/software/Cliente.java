@@ -63,9 +63,11 @@ public class Cliente extends HttpServlet {
                             // Aggiorno il saldo in sessione
                             session.setAttribute("saldo", c.getSaldo());
                             request.setAttribute("acquisto", true);
+                            request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
                         }
                         else{
                             request.setAttribute("error", true);
+                            request.getRequestDispatcher("cliente_riepilogo.jsp").forward(request, response);
                         }
                     }
                     // Carico la pagina di riepilogo
