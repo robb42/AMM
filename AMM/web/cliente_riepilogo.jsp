@@ -29,7 +29,9 @@ and open the template in the editor.
         
         <div id="page">
             <!--  sidebar 1 -->
-            <div id="sidebar1"></div>
+            <div id="sidebar1">
+                <jsp:include page="Resources/sidebar_account.jsp"/>
+            </div>
             
             <!--  sidebar 2 -->
             <div id="sidebar2"></div>

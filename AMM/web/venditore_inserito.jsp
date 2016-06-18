@@ -33,9 +33,7 @@ and open the template in the editor.
             <div id="sidebar1"></div>
             
             <!--  sidebar 2 -->
-            <div id="sidebar2">
-                <jsp:include page="Resources/sidebar2.jsp"/>
-            </div>
+            <div id="sidebar2"></div>
             
             <!-- Content -->
             <div id="content">

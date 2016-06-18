@@ -150,12 +150,11 @@ public class GocceFactory {
             ArrayList<Prodotto> listaProdotti = new ArrayList<Prodotto>();
             String query =  "SELECT * " +
                             "FROM PRODOTTO " +
-                            "WHERE NOME LIKE ? OR DESCRIZIONE LIKE ?";
+                            "WHERE LOWER(NOME) LIKE LOWER(?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             // dati
             nome = "%"+nome+"%";
             stmt.setString(1, nome);
-            stmt.setString(2, nome);
             ResultSet res = stmt.executeQuery();
             while(res.next()){
                 Prodotto p = new Prodotto();

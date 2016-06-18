@@ -40,7 +40,8 @@ public class Login extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        GocceFactory.getInstance().setConnectionString(dbConnection);
+        //GocceFactory.getInstance().setConnectionString(dbConnection);
+        GocceFactory.getInstance().setConnectionString("jdbc:derby://localhost:1527/ammdb");
     }
 
     /**
